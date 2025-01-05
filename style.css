@@ -1,5 +1,5 @@
 :root {
-    font-size: clamp(14px, calc(100vw/128), 22px);
+    font-size: clamp(16px, calc(100vw/128), 24px);
     font-family: "Bitter";
     --gradient1: radial-gradient(circle at 50% 0%, #f6d6d6, #d5dfec 100vw),
         linear-gradient(127deg, rgba(177, 218, 177, 0.8), rgba(0, 247, 255, 0));

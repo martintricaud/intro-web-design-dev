@@ -1,0 +1,533 @@
+:root {
+    font-size: clamp(14px, calc(100vw/128), 22px);
+    font-family: "Bitter";
+    --gradient1: radial-gradient(circle at 50% 0%, #f6d6d6, #d5dfec 100vw),
+        linear-gradient(127deg, rgba(177, 218, 177, 0.8), rgba(0, 247, 255, 0));
+}
+
+main{
+    position: relative;
+}
+
+strong {
+    font-weight: 600;
+    font-style: italic;
+}
+
+/* h3::before {
+    counter-increment: chapter;
+    content: counter(chapter) ". ";
+}
+
+h4::before {
+    counter-increment: section;
+    content: counter(chapter) "." counter(section) " ";
+} */
+
+summary::marker {
+    content: "+";
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 1.2em;
+}
+
+summary::-webkit-details-marker {
+    cursor: pointer;
+    content: "+";
+    font-weight: 800;
+    font-size: 1.2em;
+}
+
+summary~* {
+    margin-top: 1em;
+    padding-left: 1em;
+    border-left: 1px solid black;
+}
+
+table {
+    font-size: inherit;
+}
+
+body {
+    counter-reset: chapter section figure;
+    margin: 0;
+    padding-bottom: 1rem;
+}
+
+figcaption.numbered::before {
+    counter-increment: figure;
+    content: "Fig. " counter(figure) " : "
+}
+
+h2 {
+    padding-bottom: calc(1em / 8);
+    font-size: 2.6rem;
+    border-bottom: calc(1em / 8) solid black;
+}
+
+h3 {
+    font-size: 2.1rem;
+    font-weight: 550;
+}
+
+h4 {
+    font-size: 1.4rem;
+    height: 1lh;
+    padding: 0.5lh;
+    position: sticky;
+    height: max-content;
+    top: 0;
+    background: var(--gradient1);
+    background-attachment: fixed;
+}
+
+
+h5 {
+    font-size: 1.1rem;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Helvetica";
+}
+
+h4,
+h5 {
+    font-style: italic;
+    font-weight: 600;
+}
+
+h6 {
+    display: inline;
+    font-size: 1rem;
+    font-weight: 700;
+
+    &::after {
+        content: " ."
+    }
+
+    /* &::before{
+        display:block;
+        content: " ";
+        height: 1em;
+    } */
+}
+
+h6+p {
+    display: inline;
+}
+
+
+p,
+li {
+    line-height: 1.5
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    text-wrap: balance;
+
+}
+
+
+ol,
+ul {
+    padding-left: 1rem;
+
+}
+
+p,
+figure,
+ul,
+ol,
+li,
+details {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+
+section {
+    padding: 0 1rem;
+
+    & section {
+        padding: 0;
+    }
+
+    &>* {
+        max-width: 41rem;
+        margin: 1rem auto;
+    }
+}
+
+
+
+.background-header {
+    margin: 0;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+}
+
+body::before {
+    content: "";
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1000;
+    position: fixed;
+    top: 0;
+    background: var(--gradient1)
+}
+
+.concept>span {
+    border: 2px solid black;
+}
+
+.keyword {
+    color: rgb(110, 0, 199);
+    border: 1px solid rgb(110, 0, 199);
+    padding: 0 0.2em;
+    background-color: rgb(255, 250, 100);
+}
+
+header {
+    width: 100%;
+    display: flex;
+    background-color: #ffffffcc;
+}
+
+.navbar {
+    padding: 1rem;
+    width: 100%;
+    top: 1rem;
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    &>#page-title {
+        font: larger 500;
+        /* Combines font-size and font-weight */
+        display: flex;
+        margin: 0 auto;
+        max-width: 50ch;
+        text-align: center;
+        text-wrap: balance;
+        padding: 0.5rem 0.5rem 0 0;
+        flex-grow: 0;
+    }
+
+    &>.navitems {
+        overflow-x: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+
+    & .navitem {
+        padding: 0.5rem 0.5rem 0 0;
+        box-sizing: content-box;
+    }
+}
+
+.navitem .hidden-nav {
+    height: 0;
+    position: absolute;
+    margin: 0 auto;
+    background-color: white;
+    visibility: hidden;
+    padding: 0.5rem;
+
+    &>a {
+        display: block;
+    }
+}
+
+.navitem:hover .hidden-nav {
+    visibility: visible;
+    height: auto;
+
+}
+
+#inspiration-ribbon {
+    display: flex;
+    overflow: scroll;
+    gap: 0.5rem;
+    left: 0;
+    justify-content: center;
+}
+
+.dropdown {
+    margin-top: 3px;
+}
+
+
+
+figure {
+    box-sizing: border-box;
+    left: -0.5rem;
+
+    width: 100%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    border: 2px solid black;
+
+
+    & figcaption {
+        color: white;
+        font-style: italic;
+        padding: 0.5rem;
+        border-top: 2px solid black;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    &>img {
+        max-width: 100%;
+    }
+
+    & .table-container {
+        overflow-x: scroll;
+    }
+
+    & table {
+        width: 100%;
+        padding: 1rem;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-collapse: collapse;
+    }
+
+    & pre>code {
+        font-size: 0.8em;
+    }
+}
+
+th {
+    text-align: left;
+}
+
+thead {
+
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+th,
+td {
+    line-height: 1.618rem;
+    padding-left: .5rem;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+
+.sidebyside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content;
+
+    &>*:first-child {
+        box-sizing: content-box;
+        border-right: 2px solid black;
+    }
+
+    &>*:last-child {
+        object-fit: cover;
+        object-position: right;
+        /* width: 100%; */
+        height: 100%;
+    }
+}
+
+code {
+    background-color: rgba(250, 2500, 250, 0.923);
+    font-size: 0.9em;
+    font-family: "Fira Code", monospace;
+    white-space: pre-wrap;
+    overflow: scroll;
+}
+
+pre {
+    white-space-collapse: initial;
+    margin: 0;
+    width: 100%;
+}
+
+#text-tags td:nth-child(2) {
+    width: 50%;
+    text-align: left;
+}
+
+
+.html-output {
+    background-color: white;
+}
+
+
+.todo {
+    color: red;
+
+    & * {
+        color: red
+    }
+}
+
+.raw-container {
+    height: 20rlh;
+}
+
+
+
+.raw {
+    all: revert;
+    font-family: initial;
+    margin: initial;
+    /* position: absolute;
+    left: 0; */
+    width: 100%;
+    background-color: white;
+
+    /* width: 100vw; */
+    &.out-of-flow {
+        &::after {
+            position: static;
+            content: "";
+            height: 10rlh;
+        }
+    }
+
+
+}
+
+.wireframe {
+    height: auto;
+    overflow: scroll;
+    background-color: white;
+    position: relative;
+    z-index: -1;
+
+}
+
+.wireframe * {
+    all: revert;
+    display: block;
+    position: relative;
+    background-color: white;
+    margin: 10px;
+    border: 1px solid black;
+    min-height: 3lh;
+}
+
+.icon {
+    font-style: normal;
+    font-size: 1em;
+    border-width: 2px;
+    border-style: groove;
+    border-radius: 5px;
+    display: inline-block;
+    width: 1em;
+    padding-left: calc(1em/3);
+}
+
+.dropdown-cell::hover {}
+
+.cutout-style{
+    border-bottom: 3px solid #1080;
+    border-right: 3px solid #1082;
+    border-top: 3px solid #1084;
+    border-left: 3px solid #1082;
+    border-radius: 0.7em;
+    padding: 1em;
+    box-shadow: inset #1081 0 0 5px;
+    background-color: #fff5;
+    
+}
+.activite {
+    max-width: 30rem;
+    margin: 4rem auto;
+    
+
+    & h5 {
+
+        font-size: 1.2em;
+        text-align: center;
+        font-style: normal;
+        font-weight: 400;
+        text-shadow: white 0px 0px 4px;
+    }
+}
+
+#box-model {
+    z-index: -1;
+    width: 100%;
+    height: 15rlh;
+    position: relative;
+
+    & span {
+        padding: 0.5em 0 0 0.5em;
+        position: absolute;
+    }
+
+    & div {
+        position: absolute;
+        top: 2em;
+        left: 2em;
+        width: calc(100% - 4em);
+        height: calc(100% - 4em);
+    }
+
+    border: 2px dashed black;
+    background-color: rgb(246, 195, 140);
+
+    &>div {
+        background-color: rgb(239, 219, 143);
+        border: 2px solid black;
+
+        &>div {
+            border: 2px dashed rgb(88, 125, 125);
+            background-color: rgb(150, 217, 141);
+
+            &>div {
+                border: 2px solid rgb(88, 125, 125);
+                background-color: rgb(165, 211, 230);
+            }
+        }
+    }
+}
+
+.typography{
+    box-sizing: content-box;
+    font-size: 3rem;
+
+    line-height: 1;
+    padding: 0;
+     margin: 0;
+     height: 1ex;
+     
+    & span.ex{
+        display: inline-block;
+        
+
+        border: 1px solid green;
+        &::after{
+            display: inline-block;
+            vertical-align: baseline;
+            height: 1ex;
+            content:"";
+            width: 100px;
+
+    
+            border: 1px solid red
+        }
+       
+    }
+}

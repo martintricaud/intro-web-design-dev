@@ -1,0 +1,878 @@
+<!DOCTYPE html lang="fr">
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Fira+Code:wght@300..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./highlight/styles/default.css">
+    <script src="./highlight/highlight.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+    <div class="stacked-linear background">
+
+    </div>
+    <header>
+
+        <nav class="navbar">
+            <div id="page-title">Introduction aux Technologies Web pour le
+                Design Interactif</div>
+            <div class="navitems">
+
+                <div class="navitem"><a href="#intro">Introduction</a></div>
+                <div class="navitem"><a href="#html">HTML</a>
+                    <nav>
+
+                    </nav>
+                </div>
+                <div class="navitem"><a href="#css">CSS</a>
+                    <nav id="inspiration-ribbon" class="hidden-nav">
+                        <a href="http://web.archive.org/web/20241215002536/https://pitchforkmusicfestival.fr/">Pitchfork
+                            Music Festival</a>
+                        <a href="https://praticable.fr">Praticable</a>
+                        <a href="http://web.archive.org/web/20241207214243/https://solar.lowtechmagazine.com/obsolete-technology/">Low-Tech
+                            Magazine</a>
+                        <a href="">Fondamentaux du CSS</a>
+                    </nav>
+                </div>
+                <div class="navitem"><a href="#js">JavaScript</a>
+                </div>
+                <div class="navitem"><a href="#ressources">Ressources</a>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h3 id="intro">Introduction: d'Internet au Web</h3>
+            <section class="cutout-style">
+                <h5>Objectifs:</h5>
+                <ul>
+                    <li>Comprendre la distinction entre internet et le Web</li>
+                    <li>Savoir nommer les différentes briques technologiques nécessaire à l'existence et à l'utilisation du Web (serveur, client, protocole, navigateur)</li>
+                </ul>
+                
+            </section>
+            <h4>Points abordés</h4>
+            <ul>
+                <li><strong class="keyword">
+                        Internet</strong> est un réseau physique qui permet la communication entre machines, alors que le <strong class="keyword">Web</strong> est un réseau virtuel constitué par l'ensemble des documents multimedia mis à disposition de façon persistente par ces machines interconnectées</li>
+                <li>
+                    Un <strong class="keyword">protocole</strong> est un ensemble de règle à appliquer lors de l'envoi et de la réception d'une information afin de garantir que chaque message parvienne bien à son destinataire et soit correctement décodé.
+                    Par exemple, les règles d'affranchissement et d'adressage du courier postal sont une forme de protocole.
+                </li>
+                <li>
+                    Un <strong class="keyword">serveur</strong> est une machine en ligne sur un réseau, disponible de façon permanente pour exécuter des instructions que pourrait lui envoyer une autre machine du réseau.
+                    Une des instructions les plus courantes que l'on envoie quand on navigue sur le Web est une requête de chargement de page.
+                </li>
+                <li>
+                    Un <strong class="keyword">client</strong> est un programme qui envoie des requêtes à un serveur, mais qui ne peut pas lui même traiter de requêtes.
+                    Par exemple, des <strong class="keyword">navigateurs</strong> comme Chrome ou Firefox sont des clients.
+                    Dans ce cours, on utilisera le terme navigateur et client de façon interchangeable, mais certains programmes comme les <strong class="keyword">crawlers</strong> ou les <strong class="keyword">bots</strong> sont des clients sans être des navigateurs.
+                </li>
+                <li>
+                    La communication entre un client et un serveur se fait suivant les règles du protocole <strong class="keyword">HTTP</strong>.
+                    Celles-ci spécifient la forme que doit adopter toute requête envoyée par le client, et toute réponse renvoyée par le serveur.
+                </li>
+                <li>
+                    Une des requêtes les plus courante est la requête <strong class="keyword">GET</strong>, qui demande au serveur de renvoyer une ressource, en spécifiant l'addresse à laquelle est localisée cette ressource sur internet.
+                    Comme pour les addresses postales, celle-ci doit être précisée en respectant un standard.
+                    En l'occurence, il s'agit du standard <strong class="keyword">URL</strong>, qui signifie <strong>Universal Ressource Locator</strong>
+                </li>
+                <li>
+                    Pour la plupart des utilisateurs, l'envoi de la requête se fait en coulisse, lorsqu'on saisit une addresse dans la barre de recherche, ou que l'on clique sur un <strong class="keyword">lien hypertexte</strong></li>
+                <li>À l'aide d'une requête <strong>GET</strong>, on peut demander des ressources de nature variée: videos, images, streams, texte...
+                    Mais dans la plupart des cas, lorsque l'on navigue sur le Web, nos requêtes renvoient des <strong class="keyword">documents multimedias hypertextes</strong> - ou plutôt, le code source à partir duquel le navigateur affiche ces documents - qui peuvent par ailleurs inclure des ressources de type image, video, audio ou autre - d'ou le terme <i>multimedia</i>.
+                </li>
+                <li>
+                    Ce code source peut être examiner en utilisant l' <strong class="keyword">inspecteur</strong>, qui fait partie des outils de développement fourni par la plupart des navigateurs.
+                    Le raccourci pour l'afficher est <kbd>CMD+ALT+I</kbd>.
+                    L'inspecteur permet également d'examiner le détail des requêtes émises par le navigateur et les réponses correspondantes.
+                </li>
+                <li>
+                    Le code source encode la structure hiérarchique et le contenu d'une page au format <strong class="keyword">HTML</strong>, qui signifie <strong>HyperText Markup Language</strong>.
+                    On peut consulter ce code source dans l'onglet <i>Elements</i> de l'inspecteur.
+                    Il se présente sous forme de "tiroirs" de contenu imbriqués les uns dans les autres, ce qui définit une <strong class="keyword">structure hiérarchique</strong> - ou <strong class="keyword">arborescence</strong>.
+                    <br>
+                    Le contenu de cet onglet est interactif:
+                    Si vous sélectionnez et supprimez un élément de code source, cela supprimera le bloc de contenu correspondant sur la page, ainsi que tous ses descendants hiérarchiques.
+                </li>
+                <li>
+                    Mais il conviendrait de parler plutôt de <em>code<b>s</b> source</em> au pluriel.
+                    En effet, le code HTML ne décrit que le contenu et la structure du document.
+                    Pour ce qui est de la mise en forme avancée de la page, les règles de style sont le plus souvent définies dans un document séparé appelé <strong class="keyword">feuille de style</strong>, encodée au format <strong class="keyword">CSS</strong>.
+                </li>
+    
+            </ul>
+        </section>
+        <hr>
+        <section id="html">
+            <h3>HTML</h3>
+            <section class="cutout-style">
+                <h5>Objectifs:</h5>
+                <ul>
+                    <li>Savoir définir une hiérarchie de contenu à partir d'une maquette visuelle</li>
+                    <li>A l'aide d'un éditeur de code, écrire cette structure au format HTML en utilisant des balises sémantiques dotées des bons attributs</li>
+                    <li>Utiliser l'inspecteur pour examiner la correspondance entre code HTML et résultat visuel</li>
+                    <li>Rendre la page navigable à l'aide de lien hypertextes</li>
+                    <li>Adopter le réflexes de consulter la documentation HTML</li>
+                </ul>
+                
+            </section>
+            <section>
+                <h4>Structure d'un fichier HTML</h4>
+                <ul>
+                    <li>
+                        Les pages Web sont affichées par les navigateurs à partir de leur code source.
+                        Cette opération d'affichage est aussi appelée <strong class="keyword">rendu</strong>.
+                        Ce code source est contenu dans un fichier dédié, au format HTML - qui doit donc obligatoirement avoir l'extension <code>.html</code>
+                    </li>
+                    <li>
+                        On crée en général les fichiers HTML depuis un <strong class="keyword">éditeur de code</strong> comme <a href="">VSCode</a> ou <a href="">SublimeText</a>, via la commande <samp>File > New File</samp> ou le racourci <kbd>CMD + N</kbd>.
+                        On peut également utiliser des éditeurs en ligne comme <a href="https://replit.com">Replit</a>, <a href="https://jsfiddle.net">JSFiddle</a>, ou <a href="https://codepen.io">CodePen</a>.
+                    </li>
+                    Un fichier HTML est constitué de deux blocs essentiels:
+                    <li>
+                        En premier, l'en-tête (<strong class="keyword">head</strong> en anglais).
+                        Il contient un ensemble d'informations et de liens vers des ressources nécessaires pour que la page s'affiche correctement, mais n'est pas lui même affiché lors du rendu.
+                    </li>
+                    <li>
+                        Ensuite, le corps de la page (<strong class="keyword">body</strong> en anglais) qui décrit les blocs de contenu d'un document selon une organisation hiérarchique, de façon a pouvoir être affiché par un navigateur.
+                    </li>
+                    <li>
+                        Le début et la fin d'un bloc de contenu sont délimités par des <strong class="keyword">balises</strong> (appelées <strong class="keyword">tags</strong> en anglais) d'ouverture et de fermeture, avec la syntaxe suivante:
+                        <code>&lt;typeDeLaBalise&gt; ... &lt;/typeDeLaBalise&gt;</code>.
+                        <br>
+                        Tout ce qui existe entre les deux balises d'un élément A, y compris d'autres balises de délimitation de contenu, est hiérarchiquement inférieur à cet élément.
+                        Cela signifie que si l'on supprime l'élément A, tous les éléments définis entre les balises de A sera également supprimé.
+                    </li>
+    
+                </ul>
+                <section class="cutout-style">
+                    <h5>Compétences:</h5>
+                    <p>Utilisation basique d'un éditeur de code:</p>
+                    <ul>
+                        <li>Créer des fichiers</li>
+                        <li>Utiliser les raccourcis d'auto-complétion (avec la touche <kbd>TAB</kbd>) pour écrire du code plus rapidement</li>
+                        <li>Dupliquer le curseur pour écrire sur plusieurs lignes à la fois avec <kbd>ALT + LEFTCLICK</kbd> </li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <h4>Balises de contenu</h4>
+    
+                <ul>
+                    <li>
+                        Le type de la balise ne peut pas être choisi arbitrairement.
+                        La liste des balises admissibles est définie par le standard HTML, dont la documentation est disponible sur plusieurs sites, les plus utilisés étant le Mozilla Developer Network (MDN)
+                        et W3Schools.
+                    </li>
+                    <li>
+                        Voici quelques exemples de balises communément utilisées:
+                        <figure>
+                            <table>
+                                <thead>
+                                    <td>Balise</td>
+                                    <td>Usage</td>
+                                </thead>
+                                <tr>
+                                    <td>
+                                        <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code> ... <code>&lt;h6&gt;</code>
+                                    </td>
+                                    <td>Titres de niveau 1 à 6 (<b>h</b>eading)</td>
+    
+                                </tr>
+                                <tr>
+                                    <td> <code>&lt;p&gt;</code></td>
+                                    <td>Paragraphe</td>
+                                </tr>
+                                <tr>
+                                    <td> <code>&lt;ul&gt;</code></td>
+                                    <td>Liste non ordonnée (<b>u</b>nordered <b>l</b>ist)</td>
+                                </tr>
+                                <tr>
+                                    <td> <code>&lt;ol&gt;</code></td>
+                                    <td>Liste ordonnée (<b>o</b>rdered <b>l</b>ist)</td>
+                                </tr>
+                                <tr>
+                                    <td> <code>&lt;li&gt;</code></td>
+                                    <td>Élément de liste (<b>l</b>ist <b>i</b>tem)</td>
+                                </tr>
+                                <tr>
+                                    <td> <code>&lt;table&gt;</code></td>
+                                    <td>Tableau</td>
+                                </tr>
+                                <tr>
+                                    <td> <code>&lt;a&gt;</code></td>
+                                    <td>ancrage de lien hypertexte (<b>a</b>nchor)</td>
+                                </tr>
+                            </table>
+                        </figure>
+                    </li>
+                    <li>
+                        Le choix d'un élément - et donc de la balise qui le délimite - a une influence sur plusieurs paramètres:
+                        <ul>
+                            <li>
+                                Sur la façon dont va être affiché l'élément correspondant lors du rendu.
+                            </li>
+                            <li>
+                                Sur les types d'éléments que l'on peut imbriquer sous l'élément défini par les balises en question
+                            </li>
+                            <li>
+                                Sur l'interactivité de l'élément (c'est à dire sa capacité à déclencher des changements dans la page ou envoyer des requêtes en réponse à des actions de l'utilisateur•ice)
+                            </li>
+                            <li>
+                                Sur la compréhension - par des algorithmes - du rôle que joue le contenu de l'élément dans la page.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+               
+            </section>
+            <section>
+                <h4>Rôle sémantique des balises</h4>
+                <ul>
+                    <li>
+                        Le rôle que joue le contenu d'un élément dans la compréhension d'une page est appelé fonction <strong class="keyword">sémantique</strong>.
+                        Un humain se base sur l'apparence visuelle d'un élément et son contexte pour déterminer, par exemple, qu'un morceau de texte joue un rôle de titre, qu'un autre morceau de texte est un paragraphe, ou bien pour comprendre ce que représente une image.
+                    </li>
+                    <li>
+                        La plupart des algorithmes n'ont pas de telles facultés d'interprétation, mais doivent néanmoins pouvoir comprendre et différencier les éléments d'une page.
+                        <br>
+                        C'est le cas des <strong class="keyword">moteurs de recherche</strong>, qui se basent sur le type des balises pour identifier les éléments de contenus qu'il faut utiliser pour référencer la page de la façon la plus pertinente possible.
+                        <br>
+                        C'est aussi vrai pour les technologies assistives vocales, qui décrivent oralement la structure des pages pour que les personnes malvoyantes puissent les parcourir facilement.
+                    </li>
+                    <li>Toutes les balises ont un rôle sémantique, sauf deux: <code>&lt;span&gt;</code> et <code>&lt;div&gt;</code>.
+                        On les utilise lorsqu'on veut grouper des éléments pour faciliter certaines opérations de mise en page qui n'ont pas de rôle sémantique particulier.
+                    </li>
+                    <!-- <li>
+                    Ils sont seulement associés à une mise en forme par défaut très sommaire, qui ne spécifie qu'une règle d'affichage: en ligne de gauche à droite </li>
+                <li>
+                    Les éléments de type <code>&lt;span&gt;</code> s'affichent automatiquement à droite de l'élément qui les précède, et en dessous si jamais il n'y a plus de place sur la ligne.
+                    Leur largeur et hauteur n'est pas réglable car elle est automatiquement déterminée par la place qu'occupe leur contenu.
+                </li>
+                <li>
+                    Les éléments de type <code>&lt;span&gt;</code> s'affichent automatiquement à droite de l'élément qui les précède, et en dessous si jamais il n'y a plus de place sur la ligne.
+                    Leur largeur et hauteur n'est pas réglable car elle est automatiquement déterminée par la place qu'occupe leur contenu
+                </li> -->
+                </ul>
+            </section>
+            <section>
+                <h4>Attributs des balises</h4>
+                <ul>
+                    <li>
+                        De nombreuses éléments ont besoin qu'un ou plusieurs <strong class="keyword">attributs</strong> soient définis dans leur balises, que ce soit pour s'afficher correctement, pour être compréhensible sémantiquement, ou pour des questions d'interactivité.
+                    </li>
+                    <li>
+                        Par exemple:
+                        <ul>
+                            <li>
+                                Une image a besoin de l'adresse du fichier source pour s'afficher correctement, qui est déclarée dans l'attribut <code>src</code>:
+                                <br>
+                                <code>&lt;img src="" &gt; &lt;/img&gt;</code>
+                            </li>
+                            <li>Une image a également besoin d'une description textuelle, qui puisse être lue par un assistant vocal pour les malvoyants, ou affichée si jamais l'image ne charge pas</li>
+                            <li>
+                                la balise d'ancrage de lien hypertexte a besoin de référencer l'adresse de la cible avec l'attribut <code>href</code> (<b>h</b>ypertext <b>ref</b>erence):
+                                <br>
+                                <code>&lt;a href=""&gt; &lt;/a&gt;</code>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        D'autres attributs peuvent être définis à la convenance du développeur afin de faciliter la manipulation des éléments HTML par des scripts codés en Javascript, et leur mise en forme par des feuilles de style au format CSS:
+                        <ul>
+                            <li>
+                                l'attribut <code>id</code> qui permet d'identifier de façon unique un élément (deux éléments ne peuvent donc pas avoir un attribut <code>id</code> de même valeur).
+                            </li>
+                            <li>
+                                l'attribut <code>class</code> permet de définir le ou les labels applicables à l'élément.
+                            </li>
+                        </ul>
+    
+                    </li>
+    
+                    <li>
+                        Il est également possible de configurer l'apparence d'un élément individuel à l'aide de l'attribut <code>style</code>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <hr>
+        <section id="css">
+            <h3>CSS</h3>
+            <section class="cutout-style">
+                <h5>Objectifs:</h5>
+                <ul>
+                    <li>Écrire des instructions de mise en forme dans une feuille de style au format CSS</li>
+                    <li>Référencer la feuille de style dans un fichier HTML</li>
+                    <li>Utiliser des sélecteurs et des combinaisons de sélecteurs pour appliquer de façon ciblée les règles de mise en forme, selon le type, la classe ou l'identifiant des éléments</li>
+                    <li>Mettre en forme du texte</li>
+                    <li>Configurer les dimensions de blocs de contenu</li>
+                    <li>Automatiser le placement et le contrôle de la taille de blocs à l'intérieur d'un conteneur avec la propriété <code>display:flex</code></li>
+                    <li>Définir une grille visuelle pour positionner les éléments dans une page avec <code>display:grid</code></li>
+                    <li>Adapter la mise en page à la largeur de l'écran en utilisant les <strong class="keyword">unités relatives</strong>, les <strong class="keyword">media queries</strong> et la propriété <code>display</code></li>
+                </ul>
+                
+            </section>
+            <section>
+                <h4>Structure d'une feuille de style</h4>
+                <ul>
+                    <li>
+                        CSS est le langage qui permet de déclarer les règles de mise en forme et de style à appliquer aux différents éléments d'une page HTML.
+                    </li>
+                    <li>Ces règles sont écrite de la façon suivante:
+                        <code>propriété:valeur(unité optionnelle)</code> et sont regroupées à l'intérieurs de <strong class="keyword">sélecteurs</strong>, qui permettent de cibler le ou les éléments HTML auquels s'appliquent les instructions de mise en forme.
+                    </li>
+                    <li>
+                        par exemple
+                        <figure>
+                            <pre>
+                            <code class="language-css">h1{
+        color: rgb(255,0,0);
+        font-size: 20px;
+    }
+    .framed-box{
+        border: 2px solid black;
+    }</code>
+                        </pre>
+                        </figure>
+                    </li>
+                    <li>
+                        Le code CSS peut être déclaré directement dans le fichier HTML, à l'intérieur de l'en-tête, en imbriquant les instructions de style dans la balise dédiée:
+                        <code class="language-html">
+    &lt;style&gt; ... &lt;/style&gt;</code>
+                    </li>
+                    <li>
+                        Il peut également être défini dans un fichier à part appelé <strong class="keyword">feuille de style</strong>.
+                        Il s'agit d'un fichier muni de l'extension <code>.css</code> que l'on référence dans l'en-tête du document HTML auquel on veut qu'il s'applique.
+                    </li>
+                    <li>
+                        L'avantage d'utiliser une feuille de style est de pouvoir réutiliser les même règles de mise en forme sur plusieurs pages différentes.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h4>Sélecteurs</h4>
+                <ul>
+                    <li>
+                        Les sélecteurs définissent le ou les éléments auxquels s'appliquent un groupe de propriété.
+                    </li>
+                    <li>
+                        Les sélecteurs incontournables sont
+                        <ul>
+                            <li>
+                                Le <strong class="keyword">sélecteur universel</strong> <code>*</code> qui cible tous les éléments de la page
+                            </li>
+                            <li>
+                                le <strong class="keyword">sélecteur racine</strong> <code>:root</code> qui cible l'élément le plus haut hiérarchiquement
+                            </li>
+                            <li>
+                                Le <strong class="keyword">sélecteur d'identifiant</strong>, préfixé par <code>#</code> qui cible l'élément d'identifiant correspondant
+                            </li>
+                            <li> Le <strong class="keyword">sélecteur de classe</strong> préfixé par <code>.</code>, qui sélectionne tous les éléments dotés de la classe spécifiée</li>
+                            <li>
+                                le <strong class="keyword">sélecteur de balise</strong> qui sélectionne tous les éléments de même type - qui n'a pas de préfixe
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <figure>
+                    <pre>
+                    <code class="language-css">/* Sélecteur universel */
+    * { 
+        max-width:30em
+    }
+    
+    /* Sélecteur racine */
+    :root { 
+        font-size:16px;
+    }
+    
+    /* Sélecteur par balise */
+    section { 
+        padding left: 1rem;
+    }
+    
+    /* Sélecteur par classe */
+    .encadrement{ 
+        border: 3px solid red;
+    }
+    
+    /* Sélecteur par identifiant */
+    #introduction{ 
+        background-color:rgba(255,255,255,0.5)
+    }
+    
+    </code>
+                </pre>
+                    <figcaption> Sélecteurs essentiels avec des exemples de propriétés</figcaption>
+                </figure>
+            </section>
+            <section>
+                <h4>Propriétés et unités</h4>
+                <ul>
+                    <li>
+                        Voici quelques grandes
+                        <ul>
+                            <li>Les règles de mise en forme de texte (alignement, polices, tailles de caractères, styles)</li>
+                            <li>Les caractéristiques géometriques des blocs de contenu: dimensions, marges intérieures et extérieures, arrondi des bordures</li>
+                            <li>Les contraintes de positionnement d'éléments les uns par rapport aux autres</li>
+                            <li>Le couleurs et images pour personaliser les</li>
+                            <li>
+                                Les animations et les transitions
+                            </li>
+                        </ul>
+                        Ce n'est pas exhaustif car la liste des propriétés évolue régulièrement, mais couvre une bonne partie de ce qui est indispensable
+                    </li>
+                    <li>
+                        Toutes les propriétés associées aux dimensions et aux coordonnées d'un élément visuel nécessite que l'on précise l'unité de la grandeur.
+                    </li>
+    
+                </ul>
+                <figure>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Unité</th>
+                                    <th>Signification</th>
+                                    <th>Définition</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        px
+                                    </td>
+                                    <td>
+                                        Pixel
+                                    </td>
+                                    <td>
+                                        La taille réelle (telle que perçue par l'utilisateur) d'un pixel dépend de la résolution de l'appareil utilisé.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>pt</td>
+                                    <td>Point</td>
+    
+                                    <td>1pt = 0.3515 mm</td>
+                                    <td rowspan="4">Ce sont des unités physiques, à n'utiliser que pour la mise en forme de contenu destiné à être imprimé</td>
+                                </tr>
+                                <tr>
+                                    <td>mm, cm</td>
+                                    <td>Milimètre, Centimètre</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>in</td>
+                                    <td>Inch <i>(Pouce)</i></td>
+    
+                                    <td>1in = 25.4 mm</td>
+                                </tr>
+                                <tr>
+                                    <td>pc</td>
+                                    <td>Picas</td>
+    
+                                    <td>1pc = 4.2175 mm</td>
+                                </tr>
+    
+                                <tr>
+                                    <td>ch</td>
+                                    <td>Characters</td>
+                                    <td>1ch = largeur du caractère "0" dans la police sélectionnée</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>%</td>
+                                    <td>Pourcentage</td>
+                                    <td>1% = 1% de la valeur de la propriété ciblée chez le plus proche parent pour lequel cette propriété est définie.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>vh</td>
+                                    <td>Viewport Height</td>
+                                    <td>1vh = 1 centième de la hauteur de la fenêtre du navigateur. </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>vw</td>
+                                    <td>Viewport Width</td>
+                                    <td>1vw = 1 centième de la largeur de la fenêtre du navigateur. </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>em</td>
+                                    <td></td>
+                                    <td>1em = 1 fois la taille de police définie pour l'élément affecté par la propriété</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>rem</td>
+                                    <td> </td>
+                                    <td>1em = 1 fois la taille de police définie pour l'élément racine.
+                                    </td>
+                                    <td>Souvent, par défaut <code style="background-color: yellow;">1rem = 16px</code></td>
+    
+                                </tr>
+                                <tr>
+                                    <td>lh</td>
+                                    <td>Line Height</td>
+                                    <td>Hauteur de ligne</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>rlh</td>
+                                    <td>Root Line Height</td>
+                                    <td>Hauteur de ligne de l'élément racine
+                                    </td>
+                                </tr>
+                            </tbody>
+    
+    
+                        </table>
+                    </div>
+    
+                    <figcaption class="numbered"></figcaption>
+                </figure>
+    
+                <p>Un guide des propriétés CSS <a href="http://www.robot24.fr/wp-content/3eme/siteweb/chapitre4/memento-des-proprietes-css.html">ici</a> </p>
+    
+            </section>
+            <section>
+                <h4>Box Model</h4>
+                <ul>
+                    <li> La technologie de rendu utilisée par les navigateurs associe à tout élément HTML un conteneur rectangulaire, potentiellement invisible, qui contient quatre zone:
+                        <ul>
+                            <li>
+                                La zone de contenu (Content)
+                            </li>
+                            <li>La marge intérieure (<strong class="keyword">padding</strong>)</li>
+                            <li>
+                                La bordure (<strong class="keyword">border</strong>)
+                            </li>
+                            <li>
+                                La marge extérieure (<strong class="keyword">margin</strong>)
+                            </li>
+                        </ul>
+                    </li>
+                    <figure id="box-model" style="width: 100%; height: 15rlh">
+                        <span>Margin</span>
+                        <div>
+                            <span>Border</span>
+                            <div>
+                                <span>Padding</span>
+                                <div>
+                                    <span>Content</span>
+                                </div>
+                            </div>
+                        </div>
+                    </figure>
+                    <li>Voici quelques points à retenir.
+                        <ul>
+                            <li>Les paddings de deux éléments géometriquement adjacents s'additionnent</li>
+                            <li>Les marges de deux éléments géometriquement adjacents se recouvrent</li>
+                            <li>La marge ne compte pas dans la définition de la taille ou de la hauteur d'un élément</li>
+                            <li>On peut décider si la bordure est inclue ou non dans la définition de la hauteur et la largeur d'un élément avec l'instruction: <code>box-sizing:content-box</code> ou  <code>box-sizing:border-box</code></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h4>Positionnement d'éléments</h4>
+                <p>
+                    La position des éléments dans la page est définie la plupart du temps de façon automatique en fonction de plusieurs paramètres.
+                </p>
+                <ul>
+                    <li>
+                        Tous les éléments sont dotés d'une propriété <code>display</code>, qui prend par défaut comme valeur soit <code>block</code> soit <code>inline</code>.
+                        <figure>
+                            <table>
+                                <thead>
+                                    <th>valeur</th>
+                                    <th>positionnement</th>
+                                    <th>hauteur</th>
+                                    <th>largeur</th>
+    
+                                </thead>
+                                <tr>
+                                    <td>inline</td>
+                                    <td></td>
+                                    <td>déterminée par la hauteur du contenu uniquement. height n'a pas d'effet</td>
+                                    <td>déterminée par la largeur du contenu uniquement. width n'a pas d'effet</td>
+                                </tr>
+                                <tr>
+                                    <td>block</td>
+                                    <td>La hauteur (<u>height</u>) est ajustable </td>
+                                    <td>déterminée par la propriété <u>height</u>, ou par la hauteur du contenu si <u>height</u> n'est pas spécifié</td>
+                                    <td>déterminée par la propriété <u>width</u>, ou égale à 100% si du contenu si <u>width</u> n'est pas spécifié</td>
+                                </tr>
+                                <tr>
+                                    <td>inline-block</td>
+                                    <td></td>
+                                    <td>déterminée par la propriété height, ou par la hauteur du contenu si <u>height</u> n'est pas spécifié</td>
+                                    <td>déterminée par la largeur du contenu uniquement. <u>width</u> n'a pas d'effet</td>
+                                </tr>
+    
+                            </table>
+                            <figcaption>Valeurs possibles de la propriété <span style="font-style: normal;">display</span></figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        Tous les éléments sont également dotés d'une propriéte <code>position</code> dont la valeur par défaut est <code>static</code>.
+                        <figure>
+                            <table>
+                                <tr>
+                                    <td>static</td>
+                                    <td>La position de l'élément est automatiquement déterminée à partir de la position de l'élément qui le précède</td>
+                                </tr>
+                                <tr>
+                                    <td>fixed</td>
+                                    <td>L'élément est placé à l'aide des propriétés <code>top</code>, <code>left</code> <code>right</code>, <code>bottom</code> par rapport à la fenêtre.
+                                        Il ne bougera pas si on scroll la page</td>
+                                </tr>
+                                <tr>
+                                    <td>absolute</td>
+                                    <td>L'élément est placé à l'aide des propriétés <code>top</code>, <code>left</code> <code>right</code>, <code>bottom</code> par rapport à la position du plus proche parent positionné (c'est à dire du plus proche parent avec une position autre que <code>static</code>).</td>
+                                </tr>
+                                <tr>
+                                    <td>relative</td>
+                                    <td>L'élément est positionné avec un décalage par rapport à la position qu'il aurait occupé avec <code>position:static</code>.
+                                    </td>
+                                </tr>
+                            </table>
+                            <figcaption>Valeurs possibles de la propriété <span style="font-style: normal;">position</span></figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h4>Combinaison de sélecteurs</h4>
+                <p>
+                    On peut cibler plus précisément certains éléments en combinant les sélecteurs de différentes façon:
+                </p>
+                <ul>
+                    <li>
+                        <strong class="keyword">Addition de sélecteurs</strong>
+                        <br>
+                        Si j'accolle des sélecteurs de classe de la façon suivante:
+                        <code>.classe1.classe2.classe3{ ... }</code> cela cible tous les éléments dotés de la classe <code>classe1</code> <u><b>et</b></u> de la classe <code>classe2</code> <u><b>et</b></u> de la classe <code>classe3</code>
+                    </li>
+                    <li>
+                        <strong class="keyword">Sélecteur de descendant</strong>
+                        <br>
+                        Si j'accolle deux sélecteurs en les séparant d'un espace, le deuxième sélecteur ne s'appliquera qu'aux éléments descendants des éléments ciblés par le premier. <br>
+                        Par exemple: <code class="language-css">#shopping-list * { ... }</code></pre> cible tous les éléments descendants de l'élément portant l'identifiant <code>shopping-list</code>; <br>
+                        <code class="language-css">p img { ... }</code></pre> cible tous les éléments de type image descendants d'un élément de type paragraphe.
+                    </li>
+                    <li>
+                        <strong class="keyword">Sélecteur de descendant direct</strong>
+                        <br>
+                        Si j'accolle deux sélecteurs en les séparant d'un <code>&gt;</code>, le deuxième sélecteur ne s'appliquera qu'aux éléments descendants <em>directs</em> des éléments ciblés par le premier.
+                    </li>
+                    <li>
+                        <strong class="keyword">Sélecteur de successeur</strong>
+                        <br>
+                        Si j'accolle deux sélecteurs A et B en les séparant d'un <code>~</code>, B ne ciblera que les éléments situés après et au même niveau hiérarchique qu'un élément ciblé par le selecteur A.
+                        <br>
+                        Par exemple <code>li.separateur~li{ ... }</code> ciblera tous les éléments de type <code>li</code> situés après les élément <code>li</code> portant la classe <code>separateur</code>
+                    </li>
+                    <li>
+                        <strong class="keyword">Sélecteur de successeur direct</strong>
+                        <br>
+                        Si j'accolle deux sélecteurs A et B en les séparant d'un <code>+</code>, B ne ciblera que les éléments situés directement après et au même niveau hiérarchique qu'un élément ciblé par le selecteur A.
+                    </li>
+                </ul>
+            </section>
+            <section id="flex">
+                <h4>Éléments flexibles</h4>
+                <div style="text-align: center; color: #0006; font-family: monospace;">Contenu en construction</div>
+            </section>
+            <section>
+                <h4>Positionnement en grille</h4>
+                <div style="text-align: center; color: #0006; font-family: monospace;">Contenu en construction</div>
+            </section>
+            <section>
+                <h4>Media Queries</h4>
+                <div style="text-align: center; color: #0006; font-family: monospace;">Contenu en construction</div>
+            </section>
+        </section>
+        <hr>
+        <section id="ressources">
+            <h3>Ressources</h3>
+            <nav>
+                <ul>
+                    <li> 
+                        <a href="https://cbracco.github.io/html5-test-page/">Exemple de document HTML utilisant toutes les balises de contenu</a>
+                    </li>
+                    <li>
+                        <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Guide pour Flexbox #1</a>
+                    </li>
+                    <li>
+                        <a href="https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/">Guide pour Flexbox #2</a>
+                    </li>
+                    <li><a href="https://picsum.photos">Images de "remplissage" aléatoires</a></li>
+                </ul>
+               
+               
+                
+                
+            </nav>
+        </section>
+    
+    </main>
+    
+</body>
+
+<!-- <section id="tuto">
+        <h2>Activités et Tutoriels</h2>
+        <section>
+            <h3>Inspecteur</h3>
+            <h4>Découverte de l'inspecteur</h4>
+            <p>
+                Dans ce tutoriel, nous allons voir comment utiliser l'inspecteur du navigateur pour examiner la structure et le style d'une page, et les modifier à notre convenance.
+                Selon le navigateur,
+                Si vous êtes sur Safari, il faut d'abord activer les préférences.
+                En règle générale, le raccourci clavier ctrl alt i permet d'afficher les "outils de développement", qui contiennent notamment l'inspecteur.
+    
+                Les outils de développement se composent de plusieurs panneaux et onglets que chacun peut réorganiser selon ses préférences.
+            </p>
+            <h4>Se débarasser des éléments génants</h4>
+            
+        </section>
+        <section>
+            <h3>Mise en forme de texte</h3>
+            <p>
+                Aucune mise en forme n'a été appliquée au texte suivant, si ce n'est la mise en forme par défaut du navigateur.
+                Les titres sont effectivements d'autant plus gros qu'ils sont important, les liens sont en bleu, mais il y a de nombreux éléments qui méritent d'être améliorés.
+            </p>
+            <p>
+                La première chose qu'il conviendrait de faire est d'ajouter de l'espace.
+                La règle empirique safe c'est d'utiliser un padding ou une marge de 1rem
+            </p>
+            <h4>Limiter la largeur du texte</h4>
+                entre 50 et 70 <a href="https://journals.uc.edu/index.php/vl/article/view/5765/4629">Source</a>
+            <p>
+
+            </p>
+            <h4>Equilibrer les titres</h4>
+            Minimiser les mouvements oculaires
+            <h4>Centrer le texte</h4>
+            <h4>Optimiser la taille du texte (avancé)</h4>
+            
+        </section>
+    </section>
+    <div id="grid">
+        <div class="grid-item">
+
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+    </div>
+
+</body> -->
+
+<script>
+
+    function highlightEscapedHTML(className, highlightColor) {
+        const container = document.getElementById("escaped-html");
+
+        // Get the escaped HTML as a string
+        const escapedHtml = container.innerHTML;
+
+        // Define a regex to find the target class in escaped HTML
+        const classRegex = new RegExp(
+            `(&lt;[^&]*class="[^"]*\\b${className}\\b[^"]*"[^&]*&gt;)`,
+            "gi"
+        );
+
+        // Replace matching tags with highlighted versions
+        const highlightedHtml = escapedHtml.replace(
+            classRegex,
+            (match) => `<span style="background-color: ${highlightColor}">${match}</span>`
+        );
+
+        // Update the container with the highlighted HTML
+        container.innerHTML = highlightedHtml;
+    }
+
+    // Call the function with the desired class and highlight color
+    highlightEscapedHTML("highlight-me", "yellow");
+    // Global variable to store the filtered elements
+    let filteredElements = [];
+
+    // Function to fetch and filter elements
+    function fetchAndFilterElements() {
+        // Get the scroll position and window height
+        const scrollTop = window.scrollY;
+        const windowHeight = window.innerHeight;
+
+        // Get all elements in the document
+        const allElements = document.querySelectorAll('*');
+
+        // Filter elements
+        filteredElements = Array.from(allElements).filter(element => {
+            const boundingBox = element.getBoundingClientRect();
+            return boundingBox.bottom >= scrollTop && element.classList.contains('keyword');
+        });
+        console.log(filteredElements)
+    }
+
+    // Execute on page load
+    window.addEventListener('load', fetchAndFilterElements);
+
+    // Update filteredElements on scroll
+    window.addEventListener('scroll', fetchAndFilterElements);
+</script>
+
+
+</html>

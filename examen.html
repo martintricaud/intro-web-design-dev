@@ -1,0 +1,459 @@
+<!DOCTYPE html lang="fr">
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Fira+Code:wght@300..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../highlight/styles/default.css">
+    <script src="../highlight/highlight.js"></script>
+    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./ex6_s1.css">
+
+</head>
+
+<body>
+    <section id="ex1">
+        <h4>Exercice 1: De la maquette au code</h4>
+        <h5>Consigne</h5>
+        <p>
+            A partir du design de la page a gauche, écrire la structure HTML correspondante, en utilisant les balises
+            qui vous paraissent adaptées, par exemple <code>&lt;span&gt;</code>, <code>&lt;img&gt;</code>,
+            <code>&lt;p&gt;</code>,<code>&lt;a&gt;</code>, <code>&lt;div&gt;</code>, <code>&lt;h1&gt;</code>,
+            <code>&lt;h4&gt;</code> ..., article, section, footer, header, etc... Il y a plusieurs solutions acceptables
+            !
+            Si cela vous parait nécessaire vous pouvez ajouter des balises "invisibles", c'est à dire des éléments qui
+            aident à structurer la page mais n'apparaissent pas dans la maquette fournie.
+        </p>
+        <figure style="background-color: white">
+            <div style="text-align: center;">
+                <img src="../images/wireframe.png" alt="" />
+            </div>
+            <figcaption>Maquette d'une page web</figcaption>
+        </figure>
+        <p>
+            <ul>
+                <li>Les éléments en rouges sont cliquables (c'est à dire qu'ils dirigent vers une page ou un élément de contenu)</li>
+                <li>
+                    Les éléments hachurés sont du texte; Les éléments en noir jouent un rôle de titre;
+                </li>
+                <li>Les éléments en vert sont des images;</li>
+                <li>Les éléments en bleu sont du contenu graphique autre que des images (des icones par exemple)</li>
+            </ul>
+        </p>
+
+
+
+        <h5>Solution</h5>
+        <figure>
+            <pre>
+                <code>&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;header&gt;&lt;/header&gt;
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;div&gt;
+                &lt;img src=&quot;&quot; alt=&quot;&quot;&gt;
+            &lt;/div&gt;
+            &lt;h3&gt;Un titre&lt;/h3&gt;
+            &lt;p&gt;Portez ce vieux whisky au juge blond qui fume. &lt;br&gt;
+                &lt;a href=&quot;dummy1.org&quot;&gt;Link 1&lt;/a&gt;
+                &lt;a href=&quot;dummy2.org&quot;&gt;Link 2&lt;/a&gt;
+            &lt;a href=&quot;dummy3.org&quot;&gt;Link 3&lt;/a&gt;
+            &lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article&gt;...&lt;/article&gt;
+        &lt;article&gt;...&lt;/article&gt;
+        &lt;article&gt;
+            &lt;h3&gt;&lt;/h3&gt;
+            &lt;p&gt;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil quam ipsam error vel perspiciatis ex voluptas dolorem saepe deleniti.&lt;/p&gt;
+            &lt;p&gt;The &lt;a href=&quot;&quot;&gt;quick brown fox&lt;/a&gt; jumps over the lazy dog&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &lt;a href=&quot;&quot;&gt;
+        
+        &lt;/a&gt;
+        &lt;a href=&quot;&quot;&gt;
+        
+        &lt;/a&gt;
+        &lt;a href=&quot;&quot;&gt;
+        
+        &lt;/a&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+                    
+                </code>
+            </pre>
+
+        </figure>
+        
+
+
+
+
+    </section>
+    <hr>
+    <section id="ex2">
+        <h4>Exercice 2: Sélecteurs, partie 1</h4>
+        <h5>Consigne</h5>
+        <p>Ecrivez les sélecteurs peremettant d'appliquer les styles suivants.</p>
+        <ol>
+            <li>Tous les elements de type <code>h1</code> à <code>h5</code> et de type <code>p</code> font au maximum 75
+                caractères de large</li>
+            <li>les éléments qui ont pour type <code>article</code> et qui ont pour classe <code>vignette</code> ont
+                une largeur minimum de 300 px</li>
+            <li>Tous les éléments de type <code>li</code> contenus sous un élément avec la classe <code>menubar</code>
+                ont une valeur de la propriété <code>display</code> qui fait qu'ils s'affichent les uns après les autres
+                horizontalement.
+            </li>
+        </ol>
+        <h5>Solution</h5>
+        <figure>
+            <pre><code class="language-css">h1, h2, h4, h5, h5, h5, p{
+    max-width: 75ch;
+}
+                
+article.vignette{
+    min-width: 300px
+}
+                
+.menubar>li{
+    display: inline (ou inline-block)
+}</code></pre>
+        </figure>
+
+    </section>
+    <hr>
+    <section id="ex3">
+        <h4>Exercice 3: Sélecteurs, partie 2</h4>
+        <section>
+            <h5>
+                Consigne
+            </h5>
+            <p>Indiquez sur chacune des maquettes de pages web ci dessous quels éléments seront affectés par le sélecteur donné.</p>
+        </section>
+        <figure>
+            <pre>
+                <code class="language-css">p~article, img{ ... }</code>
+            </pre>
+
+            <div class="wireframe">
+                <div style="width: 50%; aspect-ratio: 1/1;">
+                    &lt;p class="block"&gt;
+                    <div style="float: top;">
+                        &lt;img class="illustration"&gt;
+                    </div>
+                </div>
+                <div style="float: right; width: 50%;">
+                    &lt;section&gt;
+                    <div>
+                        &lt;p&gt;
+                    </div>
+                    <div>
+                        &lt;article&gt;
+                    </div>
+                </div>
+                <div style="float: left; width: 50%;">
+                    &lt;article&gt;
+                </div>
+            </div>
+
+        </figure>
+        <figure>
+            <pre>
+                <code class="language-css">li:first-child>.illustration{ ... }</code>
+            </pre>
+
+            <div class="wireframe">
+
+                <div style="padding-right: 3em; margin-right: 30%;">
+                    &lt;ul&gt;
+                    <div style="">
+                        &lt;li&gt;
+                        <div style="width: 50%; margin-left: auto;">
+                            &lt;img class="illustration"&gt;
+                        </div>
+                    </div>
+                    <div style="">
+                        &lt;li&gt;
+                        <div style="width: 50%; margin-left: auto;">
+                            &lt;img class="illustration"&gt;
+                        </div>
+                    </div>
+                    <div style="">
+                        &lt;li&gt;
+                        <div style="width: 50%; margin-left: auto;">
+                            &lt;img class="illustration"&gt;
+                        </div>
+                    </div>
+                    <div style="">
+                        &lt;li&gt;
+                        <div style="width: 50%; margin-left: auto;">
+                            &lt;img class="illustration"&gt;
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </figure>
+    </section>
+    <hr>
+    <section id="ex4">
+        <h4>Exercice 4: Syntaxe HTML</h4>
+        <section>
+            <h5>Consigne</h5>
+            Quelles sont les erreurs dans ce code HTML?
+        </section>
+        <figure>
+            <pre>
+            <code class="language-html">&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        &lt;title&gt;Exemple d'Examen&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;header&gt;
+            &lt;h1&gt;Bienvenue sur ma page&lt;/h2&gt;
+        &lt;/header&gt;
+        &lt;main&gt;
+            &lt;p&gt;Voici un exemple de lien.&lt;/p&gt;
+            &lt;img src="image.jpg"&gt;
+            &lt;ol class=ranking&gt;
+                &lt;li&gt;Numero 1&lt;/li&gt;
+                &lt;li&gt;Numero 2&lt;li&gt;
+                &lt;li&gt;Numero 3&lt;/li&gt;
+            &lt;/ol&gt;
+            &lt;section id="1"&gt;
+                &lt;p&gt;The quick brown fox jumps over the lazy dog
+            &lt;/section&gt;
+            &lt;article&gt;
+                &lt;gras&gt;Texte important&lt;/gras&gt;
+            &lt;/article&gt;
+        &lt;/main&gt;
+        &lt;footer id="1"&gt;
+            &lt;p&gt;Copyright 2024&lt;/p&gt;
+    &lt;/body&gt;
+    Abonnez vous sur:
+    &lt;ul&gt;
+        &lt;li&gt;YouTube&lt;/li&gt;
+        &lt;li&gt;X&lt;li&gt;
+        &lt;li&gt;Instagram&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/html&gt;</code>
+        </pre>
+        </figure>
+
+    </section>
+    <hr>
+    <section id="ex5">
+        <h4>Exercice 5</h4>
+        <h5>Consigne</h5>
+        <p>Soit le code HTML et CSS suivant:</p>
+        <figure>
+            <pre>
+                <code class="language-html">&lt;!DOCTYPE html&gt; 
+&lt;html lang=&quot;fr&quot;&gt; 
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+        &lt;title&gt;Examen - CSS&lt;/title&gt;
+        &lt;style&gt; 
+            #container { 
+                width: 800px;
+                height: 300px; 
+                border: 1px solid black; 
+            } 
+            .child {
+                width: 100%; 
+                height: 80px; 
+                background-color: lightblue; 
+            } 
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;container&quot;&gt;
+            &lt;div class=&quot;child&quot;&gt;Lorem Ipsum&lt;/div&gt;
+        &lt;/div&gt; 
+    &lt;/body&gt;
+&lt;/html&gt;
+                    </code>
+                </pre>
+        </figure>
+        <p>Dessiner un aperçu de la page que l'on obtiendra après chacune de ces opérations:
+        <ol>
+            <li>Je rajoute un deuxième élément de classe <code>child</code> à l'élément portant l'identifiant `conteneur` en mettant <i>Loreeeem Ipsuuuum</i> en contenu</li>
+            <li>Je fixe la taille de <code>.child</code> à 50%. </li>
+            <li>Je remplace <code>&lt;div class="child"&gt;...&lt;/div&gt;</code> par <code>&lt;span class="child"&gt;...&lt;/span&gt;</code>
+            </li>
+            <li> Je rajoute à <code>.child</code> la propriété <code>display:block</code> et je rajoute à ma feuille de style le code CSS suivant.
+
+
+
+            </li>
+        </ol>
+        </p>
+        <figure>
+            <pre>
+        <code class="language-css">
+.child:last-child{
+position:absolute;
+top: 10px;
+}
+        </code>
+    </pre>
+        </figure>
+        <section id="ex-5-solution">
+
+            <figure>
+                <figcaption style="border-top:none; border-bottom:2px solid black">Etape 0</figcaption>
+                <div class="wireframe">
+                    <div class="child" style="height: 80px; background-color: lightblue;">
+                        Lorem Ipsum
+                    </div>
+                </div>
+            </figure>
+    
+
+            <figure>
+                <figcaption style="border-top:none; border-bottom:2px solid black">Etape 1</figcaption>
+                <div class="wireframe container">
+                    <div class="child" style="height: 80px; background-color: lightblue;">
+                        Lorem Ipsum
+                    </div>
+                    <div class="child" style=" height: 80px; background-color: lightblue;">
+                        Loreeem Ipsuuuum
+                    </div>
+                </div>
+            </figure>
+    
+            <figure>
+                <figcaption style="border-top:none; border-bottom:2px solid black">Etape 2</figcaption>
+                <div class="wireframe container">
+                    <div class="child" style="width:50% ; height: 80px; background-color: lightblue;">
+                        Lorem Ipsum
+                    </div>
+                    <div class="child" style="width:50% ; height: 80px; background-color: lightblue;">
+                        Loreeem Ipsuuuum
+                    </div>
+                </div>
+            </figure>
+    
+
+            <figure>
+                <figcaption style="border-top:none; border-bottom:2px solid black">Etape 3</figcaption>
+                <div class="wireframe container">
+                    <span class="child" style="width:50% ; height: 80px; background-color: lightblue;">
+                        Lorem Ipsum
+                    </span>
+                    <span class="child" style="width:50% ; height: 80px; background-color: lightblue;">
+                        Loreeem Ipsuuuum
+                    </span>
+                </div>
+            </figure>
+    
+
+            <figure>
+                <figcaption style="border-top:none; border-bottom:2px solid black">Etape 4</figcaption>
+                <div class="wireframe container">
+                    <span class="child" style="display:block; width:50% ; height: 80px; background-color: lightblue;">
+                        Lorem Ipsum
+                    </span>
+                    <span class="child" style="display:block; width:50% ; height: 80px; background-color: lightblue; position:absolute; top:10px;">
+                        Loreeem Ipsuuuum
+                    </span>
+                </div>
+            </figure>
+        </section>
+        
+
+
+    </section>
+    <hr>
+    <section>
+        <h4>Exercice 6: Grille de mise en page</h4>
+        <section>
+            <h5>Consigne</h5>
+            <p>
+                Soit une page html ou l'élément body est équipé de la propriété <code>display:grid</code>.
+                <br>
+                Dessiner la grille définie par le code suivant pour le cas de figure ou la fenêtre fait 1200px de large et pour le cas ou elle fait 600px de large.
+                En l'absence de précision, on considère que <code>1rem = 16px</code>
+            </p>
+            <figure>
+                <pre>
+                    <code>&lt;!DOCTYPE html &gt; 
+&lt;html lang=&quot;fr&quot; &gt; 
+    &lt;head &gt;
+    &lt;meta charset=&quot;UTF-8&quot; &gt;
+    &lt;meta name=&quot;viewport&quot;content=&quot;width=device-width, initial-scale=1.0&quot; &gt;
+    &lt;title &gt;Examen - CSS &lt;/title &gt;
+    &lt;style &gt; 
+        body{
+            display: grid; 
+            grid-template-columns: 1fr 25% minmax(100mm, 200mm) 50px; 
+            grid-template-rows: auto 150px 10%; 
+            gap: 1rem; 
+        }
+    &lt;/style &gt;
+    &lt;/head &gt;
+    &lt;body &gt;
+    &lt;/body &gt;
+&lt;/html &gt;</code>
+</pre>
+            </figure>
+        </section>
+        <section>
+            <h5>Solution</h5>
+            <figure>
+                <div class="ex6-solution container">
+                    <div class="grid w1200">
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                    </div>
+                </div>
+
+                <figcaption>
+                    1. Fenêtre de 1200px de large
+                </figcaption>
+            </figure>
+            <!-- <iframe src="examen6_solution1.html" frameborder="0" width="100%" height="33%"></iframe> -->
+            <figure>
+                <div class="ex6-solution container">
+                    <div class="grid w600">
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item"></div>
+                    </div>
+                </div>
+                <figcaption>
+                    2. Fenêtre de 600px de large
+                </figcaption>
+            </figure>
+        </section>
+    </section>
+</body>
+
+</html>

@@ -22,8 +22,19 @@
 
                 <div class="navitem"><a href="#intro">Introduction</a></div>
                 <div class="navitem"><a href="#html">HTML</a>
+                    <nav>
+
+                    </nav>
                 </div>
                 <div class="navitem"><a href="#css">CSS</a>
+                    <nav id="inspiration-ribbon" class="hidden-nav">
+                        <a href="http://web.archive.org/web/20241215002536/https://pitchforkmusicfestival.fr/">Pitchfork
+                            Music Festival</a>
+                        <a href="https://praticable.fr">Praticable</a>
+                        <a href="http://web.archive.org/web/20241207214243/https://solar.lowtechmagazine.com/obsolete-technology/">Low-Tech
+                            Magazine</a>
+                        <a href="">Fondamentaux du CSS</a>
+                    </nav>
                 </div>
                 <div class="navitem"><a href="#js">JavaScript</a>
                 </div>
@@ -103,7 +114,7 @@
                 La technologie permettant de gérer cela de manière automatisée est appelée <i>packet switching</i>.
             </p>
             <figure class="intext-image">
-                <img src="https://martintricaud.github.io/intro-web-design-dev/docs/assets//images/packet-switching.gif" alt="" style="background-color: rgb(255, 251, 236);">
+                <img src="./docs/assets//packet-switching.gif" alt="" style="background-color: rgb(255, 251, 236);">
             </figure>
             <p>
                 Le premier réseau qui implémente ce principe de <i class="keyword">packet switching</i>, c'est ARPANET, développé aux États Unis à partir de 1969 par la DARPA, la division R&D du ministère de la défense américain.
@@ -186,7 +197,7 @@
                     </p>
                     <br>
                     <figure>
-                        <img src="https://martintricaud.github.io/intro-web-design-dev/docs/assets//images/wikipedia-internet-backbone.png" alt="">
+                        <img src="./docs/assets//wikipedia-internet-backbone.png" alt="">
                         <figcaption class="numbered">La Dorsale d'internet</figcaption>
                     </figure>
                 </li>
@@ -220,7 +231,10 @@
                 Déjà à l'époque, un grand nombre de scientifiques collaboraient dans cet institut de recherche, et ce fut l'un des premiers à être équipé d'un réseau Internet.
                 Mais étant donné le caractère collectif des activités de recherche du CERN, il devint rapidement indispensable de s'équiper d'un système d'information qui permette de rendre des documents numériques accessibles de façon persistente.
             </p>
-            
+            <p class="todo">
+                Tim Berners-Lee proposa un réseau virtuel basé qui
+                De ce besoin est né le système qu'on appelle aujourd'hui le World Wide Web. Ces
+            </p>
             <details>
                 <summary>
                     le protocole <strong class="keyword">http</strong> pour
@@ -230,7 +244,7 @@
                 <div class="todo">
                     Par ex
                     <figure>
-                        <img src="https://martintricaud.github.io/intro-web-design-dev/docs/assets//images/wikipedia-requete-http.png" alt="">
+                        <img src="./docs/assets//wikipedia-requete-http.png" alt="">
                         <figcaption class="numbered">
                             Packet Switching
                         </figcaption>
@@ -282,8 +296,8 @@
             </p>
 
             <figure class="sidebyside">
-                <img src="https://martintricaud.github.io/intro-web-design-dev/docs/assets//images/next-browser.jpg" alt="" style="background-color: rgb(255, 251, 236);">
-                <img src="https://martintricaud.github.io/intro-web-design-dev/docs/assets//images/next-server.jpg" alt="" style="background-color: rgb(255, 251, 236);">
+                <img src="./docs/assets//next-browser.jpg" alt="" style="background-color: rgb(255, 251, 236);">
+                <img src="./docs/assets//next-server.jpg" alt="" style="background-color: rgb(255, 251, 236);">
             </figure>
         </section>
 
@@ -983,6 +997,7 @@ section {
             </div> -->
         </section>
         <hr>
+
         <section>
             <h4 class="clip-background">Pourquoi des feuilles de style en
                 "cascade"?</h4>
@@ -1173,7 +1188,7 @@ section {
                 La taille de texte optimale dépend essentiellement de la distance à laquel on consulte un écran, selon des règles d'accessibilités que vous pouvez trouver par exemple sur le site du <a href="https://ci.droitsdelapersonne.ca/graphic-standards-for-exhibits/text-hierarchy-and-readability/">Musée Canadien pour les Droits de la Personne</a>
             </p>
             <figure>
-                <img src="https://martintricaud.github.io/intro-web-design-dev/docs/assets//images/text-viewing-distance.png" alt="">
+                <img src="./docs/assets//text-viewing-distance.png" alt="">
                 <figcaption class="numbered">Taille de texte optimale selon la distance de visionnage</figcaption>
             </figure>
             <p>
@@ -1230,6 +1245,9 @@ h3{
                 <strong>Marges et Padding</strong>
                 Spécifier les marges et les paddings en em
             </p>
+            <section class="activite cutout-style">
+                <h5><a href="">Optimisation de la lisibilité d'un texte</a></h5>
+                 </section>
         </section>
         <hr>
         <section>
@@ -1344,11 +1362,21 @@ h3{
                 <figcaption class="numbered">Valeurs possibles de la propriété <span style="font-style: normal;">position</span></figcaption>
             </figure>
 
+            <section class="activite cutout-style"><h5>
+                Centrage d'éléments de contenus
+            </h5>
+        </section>
         </section>
         <hr>
         <section>
             <h4 class="clip-background">Feedback, feedforward</h4>
-
+            <section class="activite cutout-style">
+                <h5>
+                    Utiliser les tranistions pour améliorer le feedback
+                </h5> </section>
+                <section class="activite cutout-style">
+                    <h5>Ajouter du feedforward à l'aide de pseudo-classes</h5>
+                </section>
         </section>
         <hr>
         <section>
@@ -1361,6 +1389,14 @@ h3{
                 d'éléments</h4>
         </section>
         <hr>
+
+        <section>
+            <h4>
+                Conteneurs flexibles et en grille
+            </h4>
+            <section class="activite cutout-style">Disposer des éléments en mosaïque </section>
+        </section>
+       
         <section>
             <h4 class="clip-background">Contextualiser la mise en forme
                 à l'aide des media queries</h4>
@@ -1405,177 +1441,191 @@ h3{
         </section>
     </section>
     <hr>
-<!--      -->
+    <section>
+        <h3>CSS Avancé</h3>
+        <section>
+            <h4>Filtres et Transformations</h4>
+        </section>
+    </section>
+    <hr>
+    <section id="javascript">
+        <h3>Javascript</h3>
+        <p>
+            Javascript est un langage de programmation qui a été inventé pour permettre la manipulation de contenu multimédia par les navigateurs lors d'une session utilisateur.
+            Auparavant, l'interactivité des pages Web reposait essentiellement sur Flash - qui a été pratiquement remplacée par Javascript.
+            La génération automatique de contenu en réaction a des actions utilisateurs était gérée bien souvent par des programmes écrit en PHP, qui génèrent des pages HTML depuis un serveur.
+        </p>
+        <h4>Variables, Types, Valeurs</h4>
+        <h5>Nombres, Chaines de Caractères, Booléens</h5>
+        <p>
+            Déclarer une variable et lui assigner une valeur;
+        </p>
+        <h4>Interaction en ligne de commande</h4>
+        <p>
+        <ul>
+            <li>
+                Lire la valeur d'une variable avec <code>console.log()</code>
+            </li>
+            <li>
+                Solliciter un <i>input</i> de l'utilisateur avec <code>window.prompt()</code>
+            </li>
+        </ul>
+        </p>
+
+
+        <h4>Opérateurs </h4>
+        <ul>
+            <li>Opérateurs numériques
+            </li>
+            <li>Opérateurs booleens</li>
+            <li>
+                Operateurs sur des chaines de caractère
+            </li>
+            <li>Opérateurs de comparaison</li>
+        </ul>
+
+        <h4>Structures de contrôle</h4>
+        <h4>Boucles</h4>
+
+        <h4>Objets et listes</h4>
+        <figure>
+            <pre><code class="language-javascript">
+le monHamster = {
+    nom : "Bob",
+    age : 3,
+    vaccins: [
+        {
+            date: "2023-04-12",
+            type: "grippe aviaire"
+        },
+        {
+            date: "2019-02-24",
+            type: "tetanos"
+        }
+    
+    ]
+}</code></pre>
+        </figure>
+        <h4>Fonctions</h4>
+        <figure>
+            <pre><code class="language-javascript">
+function maFonction(arg1, arg2){
+    let result = arg1 + arg2
+    //instructions
+    return result
+}
+
+let x = maFonction(1,2)
+
+console.log(x)
+            </code></pre>
+        </figure>
+        <section>
+            <h4>Méthodes</h4>
+            Une fonction peut être fournie par un objet.
+            <figure>
+                <pre>
+                <code class="language-javascript">
+let a = document.getElementById("ex1")
+let x = document.getElementsByClassName(".classe1")
+                </code>
+            </pre>
+            </figure>
+        </section>
+
+        <section>
+            <h4>L'interfaces applicatives de l'objet Document </h4>
+            <p>Une interface est l'ensemble des méthodes rendues disponibles sur un type d'objet.
+                l'API DOM est l'ensemble des méthodes rendues par les objets de type document object
+            </p>
+
+            <section class="activite cutout-style">Ecrire un script pour supprimer du contenu sur une page </section>
+            <section class="activite cutout-style">Ecrire un script pour injecter une feuille de style sur une page </section>
+
+            <section class="activite cutout-style">Générer du contenu HTML répétitif de façon automatisée à partir d'un jeu de données </section>
+
+
+        </section>
+
+
+
+        <figure>
+            <pre>
+                <code class="language-javascript">
+document.querySelectorAll('div[class^="ad-"]').forEach(div => div.remove());
+                </code>
+            </pre>
+        </figure>
+
+        <h4>Détecteurs d'évènements
+        </h4>
+        <section class="activite cutout-style">
+            Appliquer des styles à des images
+        </section>
+
+        <h4>
+            L'API Event
+        </h4>
+
+    </section>
     <hr>
     <section>
         <h3>Tutoriels</h3>
-        <section class="activite cutout-style">Optimisation de la lisibilité d'un texte </section>
+      
         <section class="activite cutout-style">Réaliser une liste dépliable </section>
-        <section class="activite cutout-style">Centrage d'éléments de contenus </section>
+      
         <section class="activite cutout-style">Mettre en forme un bloc de contenu au format carte ou
-            vignette </section>
+        vignette </section>
         <section class="activite cutout-style">Créer une barre de menu </section>
-        <section class="activite cutout-style">Disposer des éléments en mosaïque </section>
-        <section class="activite cutout-style">Ajouter du feedforward à l'aide de pseudo-classes </section>
-        <section class="activite cutout-style">Utiliser les tranistions pour améliorer le feedback </section>
+       
+        
+    
         <section class="activite cutout-style">Faire un carroussel défilable horizontalement </section>
 
-        <section class="activite cutout-style">Générer du contenu HTML répétitif de façon automatisée à
-            partir d'un jeu de données </section>
+
         <section class="activite cutout-style">Event handlers: scroll-reactive animation </section>
         <section class="activite cutout-style">Interaction drag and drop </section>
         <section class="activite cutout-style">Créer une interface de tri </section>
-        <section class="activite cutout-style">Ecrire un script pour supprimer du contenu sur une page </section>
-        <section class="activite cutout-style">Ecrire un script pour injecter une feuille de style sur une page </section>
+
         <section class="activite cutout-style">Interface instrumentale pour personaliser son site </section>
     </section>
+    <hr>
+    <section id="ressources">
+        <h3>Ressources</h3>
+        <nav>
+            <ul>
+                <li>
+                    <a href="https://cbracco.github.io/html5-test-page/">Exemple de document HTML utilisant toutes les balises de contenu</a>
+                </li>
+                <li>
+                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Guide pour Flexbox #1</a>
+                </li>
+                <li>
+                    <a href="https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/">Guide pour Flexbox #2</a>
+                </li>
+                <li>Editeurs de code
+                    <ul>
+                        <li>Replit (en ligne)</li>
+                        <li>JSFiddle (en ligne)</li>
+                        <li><a href="https://codepen.io/">CodePen (en ligne)</a></li>
+                        <li>SublimeText</li>
+                    </ul>
+                </li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics">Bases de la mise en forme avec CSS</a></li>
+                <li>
+                    <a href="https://picsum.photos">Picsum - l'équivalent de Lorem Ipsum pour les images</a>
+                </li>
+                <li>
+                    <a href="./examen.html">Lien vers le corrigé de l'examen</a>
+                </li>
+            </ul>
 
-    <figure>
-        <div class="table-container">
-            <table id="text-tags">
-                <thead>
-                    <tr>
-                        <th>Balise</th>
-                        <th>Définition</th>
-                        <th>Exemple</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>a</code></td>
-                        <td><b>a</b>nchor</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><code>abbr</code></td>
-                        <td><b>abbr</b>eviation</td>
-                    </tr>
-                    <tr>
-                        <td><code>bdi</code></td>
-                        <td><bdi>bdi</bdi></td>
-                    </tr>
-                    <tr>
-                        <td><code>bdo</code></td>
-                        <td><bdo dir="">bdo</bdo></td>
-                    </tr>
-                    <tr>
-                        <td><code>em</code></td>
-                        <td><b>em</b>phasis</td>
-                    </tr>
-                    <tr>
-                        <td><code>strong</code></td>
-                        <td><b>strong</b></td>
-                        <td><strong>attention</strong></td>
-                    </tr>
-                    <tr>
-                        <td><code>small</code></td>
-                        <td>Du texte en petit caractères</td>
-                        <td><small>Photo non contractuelle</small>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>s</code></td>
-                        <td><b>s</b>trikethrough</td>
-                        <td>une information obsolète</td>
-                    </tr>
-                    <tr>
-                        <td><code>cite</code></td>
-                        <td>Une oeuvre référencée</td>
-                        <td><cite>Alice au pays des
-                                merveilles</cite></td>
-                    </tr>
-                    <tr>
-                        <td><code>q</code></td>
-                        <td>Une citation, ou <i>quote</i> en
-                            anglais</td>
-                        <td><q>May the force be with you</q></td>
-                    </tr>
-                    <tr>
-                        <td><code>dfn</code></td>
-                        <td><b>d</b>e<b>f</b>i<b>n</b>ition</td>
-                    </tr>
-                    <tr>
-                        <td><code>var</code></td>
-                        <td>une formule mathématique</td>
-                        <td><var>x=y+2</var></td>
-                    </tr>
-                    <tr>
-                        <td><code>code</code></td>
-                        <td>du code informatique : </td>
-                        <td><code>let x = 0;</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>time</code></td>
-                        <td>Une information de temps</td>
-                        <td><time datetime="">20h</time></td>
-                    </tr>
-                    <tr>
-                        <td><code>mark</code></td>
-                        <td>Une annotation de lecture (par
-                            distinction avec les annotations
-                            présente sur le
-                            texte d'origine)</td>
-                        <td><mark>Texte surligné</mark></td>
-                    </tr>
-                    <tr>
-                        <td><code>br</code></td>
-                        <td>line <b>br</b>eak</td>
-                    </tr>
-                    <tr>
-                        <td><code>u</code></td>
-                        <td><b>u</b>narticulated</td>
-                        <td>
-                            <u>★</u>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>b</code></td>
-                        <td><b>b</b>ring attention</td>
-                    </tr>
-                    <tr>
-                        <td><code>i</code></td>
-                        <td>du texte différencié</td>
-                        <td>le nom scientifique de la pomme est
-                            <i>Malus domestica</i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>data</code></td>
-                        <td>Un élément enrichi d'une donnée lisible
-                            par une machine </td>
-                        <td><data value="">data</data></td>
-                    </tr>
-                    <tr>
-                        <td><code>rt</code></td>
-                        <td>
-                            <rt>rt</rt>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>sub</code></td>
-                        <td><sub>sub</sub></td>
-                    </tr>
-                    <tr>
-                        <td><code>sup</code></td>
-                        <td><sup>sup</sup></td>
-                    </tr>
-                    <tr>
-                        <td><code>kbd</code></td>
-                        <td><kbd>kbd</kbd></td>
-                    </tr>
-                    <tr>
-                        <td><code>samp</code></td>
-                        <td>Le message de sortie d'un programme
-                        </td>
-                        <td><samp>Windows a rencontré un
-                                problème</samp></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <figcaption class="numbered">Balises de texte</figcaption>
-    </figure>
+            <!-- Pour de l'inspiration https://www.awwwards.com/websites/sites_of_the_day/ -->
+        </nav>
+    </section>
+    <section id="ressources">
+        <h3>Ressources</h3>
+    </section>
 
 
 </body>

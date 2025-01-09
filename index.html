@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./highlight/styles/default.css">
     <script src="./highlight/highlight.js"></script>
-    <script>
-
-        hljs.highlightAll();
-    </script>
+    <script>hljs.highlightAll();</script>
 </head>
 
 <body>
@@ -22,7 +19,6 @@
             <div id="page-title">Introduction aux Technologies Web pour le
                 Design Interactif</div>
             <div class="navitems">
-
                 <div class="navitem"><a href="#intro">Introduction</a></div>
                 <div class="navitem"><a href="#html">HTML</a>
                     <nav>
@@ -282,12 +278,7 @@
                         Il permet d'encoder textuellement l'ensemble des infos relatives à la structure et au contenu d'une page
                     </p>
                 </li>
-               
             </ul>
-           
-
-
-
             <p>
                 Pour faire la démonstration de ce nouveau système, Tim Berners-Lee développa également le premier navigateur web grâce auquel on pouvait consulter des pages mises à disposition par un serveur - dès lors qu'on était connecté au même réseau que celui-ci.
             </p>
@@ -393,6 +384,7 @@
 
             </p>
 
+            
             <figure id="sample-html-doc">
                 <pre>
                     <code class="language-html">&lt;!DOCTYPE html&gt;
@@ -447,7 +439,7 @@
                 Par exemple, en l'absence de mise en forme CSS, la page générée par le code de la <a href="#sample-html-doc">Figure 3</a> ressemblerait à celà
             </p>
 
-            <iframe class="raw" src="./assets/pages/sample-html-doc.html" frameborder="0" style="height: 20rlh;"></iframe>
+            <iframe class="raw" src="./docs/pages/sample-html-doc.html" frameborder="0" style="height: 20rlh;"></iframe>
 
             <p>
                 C'est assez sommaire, mais on remarque que les balises choisies pour structurer le contenu - certaines en tout cas - ont une influence sur l'apparence du texte.
@@ -701,8 +693,7 @@
                 <li>Elle garantit que la page demeure compréhensible si jamais la connexion est mauvaise et que l'image ne charge pas;</li>
                 <li>Elle permet que ce que représente l'image soit pris en compte facilement par les moteurs de recherche.</li>
             </ul>
-
-
+            Pour une balise comme <code>meter</code>, les attributs permettent de décrire des paramètres qui - outre leur rôle sémantique - déterminent la configuration visuelle du composant correspondant
 
             <!-- Prenons l'exemple de la balise <code>&lt;meter&gt;</code>.
                 Elle requiert au moins trois attributs -->
@@ -984,7 +975,7 @@ section {
 
 </code>
             </pre>
-                <figcaption> Sélecteurs essentiels avec des exemples de propriétés</figcaption>
+                <figcaption class="numbered"> Sélecteurs essentiels avec des exemples de propriétés</figcaption>
             </figure>
 
             <!-- <div class="todo">
@@ -1522,6 +1513,8 @@ h3{
             Auparavant, l'interactivité des pages Web reposait essentiellement sur Flash - qui a été pratiquement remplacée par Javascript.
             La génération automatique de contenu en réaction a des actions utilisateurs était gérée bien souvent par des programmes écrit en PHP, qui génèrent des pages HTML depuis un serveur.
         </p>
+        <h4>Syntaxe de base</h4>
+
         <h4>Variables, Types, Valeurs</h4>
         <h5>Nombres, Chaines de Caractères, Booléens</h5>
         <p>
@@ -1530,6 +1523,7 @@ h3{
         <h4>Interaction en ligne de commande</h4>
         <p>
         <ul>
+            <li>Utiliser l'inspecteur pour accéder à la console</li>
             <li>
                 Lire la valeur d'une variable avec <code>console.log()</code>
             </li>
@@ -1551,10 +1545,42 @@ h3{
             <li>Opérateurs de comparaison</li>
         </ul>
 
-        <h4>Structures de contrôle</h4>
+        <h4>Structures conditionnelles</h4>
         <h4>Boucles</h4>
-
+Une boucle est une structure de contôle qui permet de répéter un bloc d'instructions de façon répétitive un certain nombre de fois 
         <h4>Objets et listes</h4>
+        <p>
+            Les objets et les listes sont des structures de données qui se distinguent des types primitifs par leur rôle de conteneur.
+            On peut les voir comme des meubles à tiroirs, dont chaque tiroir peut contenir d'autres tiroirs, ou bien une valeur.
+        </p>
+        <p>
+           Deux choses distinguent les objets des listes.
+           <ul>
+            <li>
+                Premièrement, la syntaxe: un objet est signalé par des accolades: <code>{}</code>, alors qu'un objet est signalé par des crochets carrés" <code>[]</code>. 
+            </li>
+            <li>
+                Deuxièmement, chaque "tiroir" d'un objet doivent obligatoirement avoir un nom, un peu comme une étiquette.
+                <figure>
+                    <pre><code>
+                        let identite = {
+                            nom : "Razinski",
+                            prenom: "Bob",
+                            profession: "monstre",
+                            nombreYeux: 1
+                        }
+                    </code></pre>
+                </figure>
+                Ce nom également appelée clef (key) ou champ (field) doit être unique à l'intérieur d'un parent donné.
+                A l'inverse les éléments d'une liste n'ont pas d'étiquette.
+            </li>
+            <li>
+                Enfin, 
+            </li>
+           </ul>
+          
+
+        </p>
         <figure>
             <pre><code class="language-javascript">
 le monHamster = {
@@ -1587,7 +1613,7 @@ let x = maFonction(1,2)
 console.log(x)
             </code></pre>
         </figure>
-        <section>
+        <section data-topic="javascript">
             <h4>Méthodes</h4>
             Une fonction peut être fournie par un objet.
             <figure>
@@ -1600,14 +1626,14 @@ let x = document.getElementsByClassName(".classe1")
             </figure>
         </section>
 
-        <section>
+        <section data-topic="javascript">
             <h4>L'interfaces applicatives de l'objet Document </h4>
             <p>Une interface est l'ensemble des méthodes rendues disponibles sur un type d'objet.
                 l'API DOM est l'ensemble des méthodes rendues par les objets de type document object
             </p>
 
-            <section class="activite cutout-style">Ecrire un script pour supprimer du contenu sur une page </section>
-            <section class="activite cutout-style">Ecrire un script pour injecter une feuille de style sur une page </section>
+            <section data-topic="javascript html" class="activite cutout-style">Ecrire un script pour supprimer du contenu sur une page </section>
+            <section data-topic="javascript css" class="activite cutout-style">Ecrire un script pour injecter une feuille de style sur une page </section>
 
             <section class="activite cutout-style">Générer du contenu HTML répétitif de façon automatisée à partir d'un jeu de données </section>
 
@@ -1794,12 +1820,17 @@ document.querySelectorAll('div[class^="ad-"]').forEach(div => div.remove());
             
         </div>
         <div class="grid-item">
-            
+                
         </div>
     </div>
 
 </body> -->
 <script>
+    let translateH4 = d=>e=> { e.target.style.paddingTop = d}
+    document.querySelectorAll("h4").forEach(element => {
+        element.addEventListener("mouseenter", translateH4("3lh"))
+        element.addEventListener("mouseleave", translateH4("0.5lh"))
+    });
 
     function highlightEscapedHTML(className, highlightColor) {
         const container = document.getElementById("escaped-html");

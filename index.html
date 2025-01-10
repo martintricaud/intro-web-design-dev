@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <span>menu</span>
     <div class="stacked-linear background">
 
     </div>
@@ -1290,6 +1291,9 @@ h3{
                 <li>Les marges de deux éléments géometriquement adjacents se recouvrent</li>
                 <li>La marge ne compte pas dans la définition de la taille ou de la hauteur d'un élément</li>
                 <li>On peut décider si la bordure est inclue ou non dans la définition de la hauteur et la largeur d'un élément avec l'instruction: <code>box-sizing:content-box</code> ou <code>box-sizing:border-box</code></li>
+                <li>
+                    Le point de coordonnées <var>0;0</var> d'une boite se situe en haut à gauche de la zone de bordure, 
+                </li>
             </ul>
             </p>
             </ul>
@@ -1513,14 +1517,18 @@ h3{
             Auparavant, l'interactivité des pages Web reposait essentiellement sur Flash - qui a été pratiquement remplacée par Javascript.
             La génération automatique de contenu en réaction a des actions utilisateurs était gérée bien souvent par des programmes écrit en PHP, qui génèrent des pages HTML depuis un serveur.
         </p>
-        <h4>Syntaxe de base</h4>
-
+        <h4>Concepts de base</h4>
+    
         <h4>Variables, Types, Valeurs</h4>
         <h5>Nombres, Chaines de Caractères, Booléens</h5>
         <p>
-            Déclarer une variable et lui assigner une valeur;
+          La déclaration de variable se fait à l'aide du mot clef <code>let</code>:
+          L'instruction <code>let a</code> 
         </p>
         <h4>Interaction en ligne de commande</h4>
+        <p>
+
+        </p>
         <p>
         <ul>
             <li>Utiliser l'inspecteur pour accéder à la console</li>
@@ -1547,44 +1555,45 @@ h3{
 
         <h4>Structures conditionnelles</h4>
         <h4>Boucles</h4>
-Une boucle est une structure de contôle qui permet de répéter un bloc d'instructions de façon répétitive un certain nombre de fois 
+        <p>Une boucle est une structure de contôle qui permet de répéter un bloc d'instructions de façon répétitive un certain nombre de fois </p>
         <h4>Objets et listes</h4>
         <p>
             Les objets et les listes sont des structures de données qui se distinguent des types primitifs par leur rôle de conteneur.
             On peut les voir comme des meubles à tiroirs, dont chaque tiroir peut contenir d'autres tiroirs, ou bien une valeur.
         </p>
-        <p>
-           Deux choses distinguent les objets des listes.
-           <ul>
+        <p>Deux choses distinguent les objets des listes.
+            <ul>
             <li>
-                Premièrement, la syntaxe: un objet est signalé par des accolades: <code>{}</code>, alors qu'un objet est signalé par des crochets carrés" <code>[]</code>. 
+                Premièrement, la syntaxe: un objet est signalé par des accolades: <code>{}</code>, alors qu'une liste est signalé par des crochets carrés" <code>[]</code> (mais dans les deux cas les éléments qu'ils contiennent sont séparés par des virgules <code>,</code> )
             </li>
             <li>
-                Deuxièmement, chaque "tiroir" d'un objet doivent obligatoirement avoir un nom, un peu comme une étiquette.
+                Deuxièmement, chaque "tiroir" d'un objet doit obligatoirement avoir un nom, un peu comme une étiquette, alors que les éléments d'une liste n'en ont pas.
                 <figure>
-                    <pre><code>
-                        let identite = {
-                            nom : "Razinski",
-                            prenom: "Bob",
-                            profession: "monstre",
-                            nombreYeux: 1
-                        }
+                    <pre><code class-language="javascript">// un exemple d'objet
+let identite = {
+    nom : "Razowski",
+    prenom: "Bob",
+    profession: "monstre",
+    nombreYeux: 1
+}
+
+// un exemple de liste
+let competences = ["Figma","Blender","shitposting","origamis"]
                     </code></pre>
                 </figure>
-                Ce nom également appelée clef (key) ou champ (field) doit être unique à l'intérieur d'un parent donné.
-                A l'inverse les éléments d'une liste n'ont pas d'étiquette.
+                Ce nom également appelée clef (key) ou champ (field) doit être unique à l'intérieur d'un tiroir.
             </li>
             <li>
-                Enfin, 
+                Enfin, dans un objet l'ordre dans lequel on déclare les propriétés n'a pas d'importance -  car pour accéder au contenu d'un tiroir on a seulement besoin de connaitre sa clef (ou son étiquette).
+                Au contraire, l'ordre dans lequel apparaissent les éléments d'une liste est très important, car c'est via leur position qu'on peut y accéder individuellement.
             </li>
            </ul>
-          
-
         </p>
+       
         <figure>
             <pre><code class="language-javascript">
 le monHamster = {
-    nom : "Bob",
+    nom : "Poppy",
     age : 3,
     vaccins: [
         {
@@ -1599,31 +1608,49 @@ le monHamster = {
     ]
 }</code></pre>
         </figure>
-        <h4>Fonctions</h4>
-        <figure>
-            <pre><code class="language-javascript">
-function maFonction(arg1, arg2){
-    let result = arg1 + arg2
-    //instructions
-    return result
+        <p>
+            Nous disposons d'une syntaxe pour stocker et organiser de l'information dans des conteneur dédiés, mais dans un programme comme dans une maison, le rangement n'est utile que si l'on peut ré-accéder à ce que l'on a rangé.
+        </p>
+        <p>
+            JavaScript fourni une syntaxe pour accéder au contenus des listes via la position de l'élément recherché, et au contenu des objets via sa clef.
+        </p>
+        <section id="functions">
+            <h4>Fonctions</h4>
+            <p>
+                Lorsqu'une même suite d'instruction est fréquemment utilisée dans un programme, on peut la regrouper dans un sous-programme appelé <strong class="keyword">fonction</strong> - qui joue le rôle de raccourci.
+                Au lieu de devoir répéter la suite d'instruction à chaque fois que l'on en a besoin, il suffit de demander au programme d'exécuter le sous-programme qui contient cette séquence.
+            </p>
+            <p>
+                L'action de regrouper des instructions à l'intérieur d'un bloc réutilisable s'appelle la <strong class="keyword">déclaration de la fonction</strong>.
+                <br>
+                Ces instructions s'exécutent lors d'une étape qu'on appelle - selon les cas de figure - l'<strong class="keyword">évaluation</strong>, l'<strong class="keyword">appel</strong> ou l'<strong class="keyword">exécution de la fonction</strong>
+                Voici une façon de déclarer une fonction, suivi d'un appel
+            </p>
+            <figure>
+                <pre><code class="language-javascript">function maFonction(x){
+    console.log("bonjour, je m'appelle: "+x)
 }
 
-let x = maFonction(1,2)
+maFonction("Claude")
 
-console.log(x)
-            </code></pre>
-        </figure>
-        <section data-topic="javascript">
-            <h4>Méthodes</h4>
-            Une fonction peut être fournie par un objet.
-            <figure>
-                <pre>
-                <code class="language-javascript">
-let a = document.getElementById("ex1")
-let x = document.getElementsByClassName(".classe1")
-                </code>
-            </pre>
+//La console affiche: "Je m'appelle Claude"
+</code></pre>
             </figure>
+            <p>La déclaration commence ici par le mot clef <code>function</code>, suivi du nom de la fonction, que l'on peut choisir comme on veut tant que cela respecte les règles de syntaxe.</p>
+            <p>Une fonction peut prendre un ou des <strong class="keywords">paramètres d'entrée</strong>, donnés entre parenthèse juste après le nom de la fonction, qui permette de moduler l'effet de la fonction selon la valeur qui sera affectée à ce paramètre lors de l'appel</p>
+            <section data-topic="javascript">
+                <h4>Méthodes</h4>
+                Une fonction peut être fournie par un objet.
+                <figure>
+                    <pre>
+                    <code class="language-javascript">
+    let a = document.getElementById("ex1")
+    let x = document.getElementsByClassName(".classe1")
+                    </code>
+                </pre>
+                </figure>
+        </section>
+        
         </section>
 
         <section data-topic="javascript">
@@ -1823,13 +1850,12 @@ document.querySelectorAll('div[class^="ad-"]').forEach(div => div.remove());
                 
         </div>
     </div>
-
 </body> -->
 <script>
     let translateH4 = d=>e=> { e.target.style.paddingTop = d}
     document.querySelectorAll("h4").forEach(element => {
-        element.addEventListener("mouseenter", translateH4("3lh"))
-        element.addEventListener("mouseleave", translateH4("0.5lh"))
+        // element.addEventListener("mouseenter", translateH4("3lh"))
+        // element.addEventListener("mouseleave", translateH4("0.5lh"))
     });
 
     function highlightEscapedHTML(className, highlightColor) {

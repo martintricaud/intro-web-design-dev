@@ -3,7 +3,8 @@
     font-family: "Bitter";
     --gradient1: radial-gradient(circle at 50% 0%, #f6d6d6, #d5dfec 100vw),
         linear-gradient(127deg, rgba(177, 218, 177, 0.8), rgba(0, 247, 255, 0));
-}
+    --border-style-1: 2px solid black;
+    }
 
 main {
     position: relative;
@@ -13,6 +14,7 @@ strong {
     font-weight: 600;
     font-style: italic;
 }
+
 
 /* h3::before {
     counter-increment: chapter;
@@ -45,6 +47,7 @@ summary~* {
 }
 
 table {
+    border-collapse: collapse;
     font-size: inherit;
 }
 
@@ -52,6 +55,8 @@ body {
     counter-reset: chapter section figure;
     margin: 0;
     padding-bottom: 1rem;
+    background: var(--gradient1);
+    background-attachment: fixed;
 }
 
 
@@ -78,6 +83,39 @@ h4 {
     background-attachment: fixed;
 }
 
+h4>a{
+    text-decoration: none;
+    color: black;
+}
+h4::before{
+    content:"├─";
+    font-style: normal;
+    font-family: monospace;
+    font-weight: bolder;
+    position: relative;
+    left: -2rem;
+}
+
+section:last-child>h4::before{
+    content:"└──";
+}
+
+.list-icon{
+    opacity: 20%;
+    padding-left: 1rem;
+    content:"≡";
+    font-family: monospace;
+    font-style:normal;
+    display: inline-block;
+    width: 20px;
+
+    &:hover{
+        opacity: 100%;
+        cursor: pointer;
+    }
+}
+
+
 
 h5 {
     font-size: 1.1rem;
@@ -85,6 +123,8 @@ h5 {
 
 h1,h2,h3 {
     font-family: "Helvetica";
+    position: relative;
+    left: -2rem;
 }
 
 h4,h5 {
@@ -130,7 +170,7 @@ ol,
 li,
 details {
     margin-top: 1em;
-    margin-bottom: 1em;
+
 }
 
 
@@ -147,8 +187,6 @@ section {
     }
 }
 
-
-
 .background-header {
     margin: 0;
     width: 100vw;
@@ -156,19 +194,8 @@ section {
     top: 0;
 }
 
-body::before {
-    content: "";
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1000;
-    position: fixed;
-    top: 0;
-    background: var(--gradient1)
-}
-
 .concept>span {
-    border: 2px solid black;
+    border: var(--border-style-1);
 }
 
 .keyword {
@@ -242,7 +269,7 @@ header {
 
 figure {
     box-sizing: border-box;
-    border: 2px solid black;
+    border: var(--border-style-1);
     left: -0.5rem;
     margin-right: auto;
     margin-left: auto;
@@ -250,15 +277,7 @@ figure {
     &:has(.sidebyside){
         border: 1px solid black;
     }
-    & figcaption {
-        color: white;
-        font-family: Bitter;
-        font-style: italic;
-        padding: 0.5rem;
-        border-top: 2px solid black;;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
-
+    
     &>img {
         max-width: 100%;
     }
@@ -270,7 +289,7 @@ figure {
     & table {
         width: 100%;
         background-color: #fff8;
-        border-collapse: collapse;
+        
     }
 
     & pre>code {
@@ -278,10 +297,19 @@ figure {
     }
 }
 
+figcaption {
+    color: white;
+    font-family: Bitter;
+    font-style: italic;
+    padding: 0.5rem;
+    border-top: var(--border-style-1);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 
 
 figcaption+.sidebyside{
-    border: 2px solid black;
+    border: var(--border-style-1);
     border-top-width: 1px;
 }
 
@@ -310,9 +338,6 @@ tr:nth-child(even), thead {
 .sidebyside {
     display: flex;
     flex-wrap: wrap;
-
-    /* grid-template-columns: 1fr 1fr;
-    grid-template-rows: min-content; */
     &>* {
         border: 1px solid black;
         flex: 1 1 300px;
@@ -321,17 +346,6 @@ tr:nth-child(even), thead {
         /* Ensures items don't shrink below 300px */
         max-width: 100%;
     }
-
-    /* &>*:first-child {
-        box-sizing: content-box;
-        border-right: 2px solid black;
-    } */
-
-    /* &>*:last-child {
-        object-fit: cover;
-        object-position: right;
-        height: 100%;
-    } */
 }
 
 code {
@@ -425,9 +439,8 @@ pre {
     padding-left: calc(1em/3);
 }
 
-.dropdown-cell::hover {}
-
 .cutout-style {
+
     border-bottom: 3px solid #1080;
     border-right: 3px solid #1082;
     border-top: 3px solid #1084;
@@ -442,20 +455,19 @@ pre {
 .activite {
     max-width: 30rem;
     margin: 4rem auto;
+}
 
-
-    & h5 {
-
+activite>h5{
         font-size: 1.2em;
         text-align: center;
         font-style: normal;
         font-weight: 400;
         text-shadow: white 0px 0px 4px;
-    }
 }
 
-#box-model {
-    width: 94%;
+
+#fig-box-model>div {
+    width: calc(100%-1em);
     margin: 1em;
     z-index: -1;
     height: 15rlh;
@@ -528,8 +540,10 @@ pre {
 
     & td {
         padding: 0;
+        min-width: 12ch;
 
         & .raw {
+            width: auto;
             padding: 0.5em;
         }
     }
@@ -569,4 +583,60 @@ pre {
 .vignette button {
     display: block;
     width: 100%;
+}
+
+
+/* UTILITY CLASSES FOR HANDLING THE TRANSITION TO TABLE-OF-CONTENT VIEW */
+
+
+.shrink, .shrink *{
+    display: block;
+    opacity: 0;
+    position: static;
+    height: 0 !important;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: opacity 0.21s, scale 0.3s, margin 0.3s;
+
+}
+
+.shrink *::after, .shrink *::before{
+    display: none;
+}
+
+section:has(h4+.shrink){
+    height: 2lh;
+}
+/* .hidden{
+    display:none; 
+    transition: display 0.5s;
+} */
+
+.content-list-item{
+    background: none;
+    margin: 0;
+    transition: margin 0.3s;
+    /* position: static; */
+    /* padding-bottom: 0; */
+    /* transition: position 0.5s, font-size 0.1s; */
+    /* &:not(:hover){
+        opacity: 0.5;
+    } */
+    
+}
+
+body:has(.content-list-item){
+    height: 100vh;
+    overflow: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+
+body:has(.content-list-item)::before{
+    display: block;
+    content: "";
+    height: 50vh;
+    overflow: hidden;
+    scroll-snap-type: y mandatory;
 }

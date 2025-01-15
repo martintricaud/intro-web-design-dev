@@ -4,11 +4,9 @@
     --gradient1: radial-gradient(circle at 50% 0%, #f6d6d6, #d5dfec 100vw),
         linear-gradient(127deg, rgba(177, 218, 177, 0.8), rgba(0, 247, 255, 0));
     --border-style-1: 2px solid black;
-    }
-
-main {
-    position: relative;
 }
+
+
 
 strong {
     font-weight: 600;
@@ -26,25 +24,6 @@ h4::before {
     content: counter(chapter) "." counter(section) " ";
 } */
 
-summary::marker {
-    content: "+";
-    cursor: pointer;
-    font-weight: 800;
-    font-size: 1.2em;
-}
-
-summary::-webkit-details-marker {
-    cursor: pointer;
-    content: "+";
-    font-weight: 800;
-    font-size: 1.2em;
-}
-
-summary~* {
-    margin-top: 1em;
-    padding-left: 1em;
-    border-left: 1px solid black;
-}
 
 table {
     border-collapse: collapse;
@@ -58,8 +37,6 @@ body {
     background: var(--gradient1);
     background-attachment: fixed;
 }
-
-
 
 h2 {
     padding-bottom: calc(1em / 8);
@@ -75,7 +52,8 @@ h3 {
 h4 {
     font-size: 1.4rem;
     height: 1lh;
-    padding: 0.5lh 0;
+    padding-top: 0.5lh;
+    padding-bottom: 0.5lh;
     position: sticky;
     height: max-content;
     top: 0;
@@ -83,33 +61,36 @@ h4 {
     background-attachment: fixed;
 }
 
-h4>a{
+h4>a {
     text-decoration: none;
     color: black;
 }
-h4::before{
-    content:"├─";
+
+h4::before {
+    content: "├─";
+    position: absolute;
+    left: -2ch;
+    font-size: 1.1rem;
     font-style: normal;
-    font-family: monospace;
+    font-family: Fira Code;
     font-weight: bolder;
-    position: relative;
-    left: -2rem;
+
 }
 
-section:last-child>h4::before{
-    content:"└──";
+section:last-child>h4::before {
+    content: "└─ ";
 }
 
-.list-icon{
+.list-icon {
     opacity: 20%;
     padding-left: 1rem;
-    content:"≡";
+    content: "≡";
     font-family: monospace;
-    font-style:normal;
+    font-style: normal;
     display: inline-block;
     width: 20px;
 
-    &:hover{
+    &:hover {
         opacity: 100%;
         cursor: pointer;
     }
@@ -121,13 +102,22 @@ h5 {
     font-size: 1.1rem;
 }
 
-h1,h2,h3 {
+h1, h2, h3 {
     font-family: "Helvetica";
-    position: relative;
-    left: -2rem;
 }
 
-h4,h5 {
+h3~* {
+    margin-left: 1rem;
+}
+
+h4{
+    padding-left: 0.5rem;
+}
+h4~* {
+    margin-left: 0.5rem;
+}
+
+h4, h5 {
     font-style: italic;
     font-weight: 600;
 }
@@ -136,24 +126,18 @@ h6 {
     display: inline;
     font-size: 1rem;
     font-weight: 700;
-    &+p{
+    &+p {
         display: inline;
     }
 }
 
 
-p,
-li {
+p, li {
     line-height: 1.5
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
+h1, h2, h3, h4, h5 {
     text-wrap: balance;
-
 }
 
 
@@ -163,28 +147,20 @@ ul {
 
 }
 
-p,
-figure,
-ul,
-ol,
-li,
-details {
+ul, ol, li {
     margin-top: 1em;
 
 }
 
-
-section {
+main {
+    margin: 1rem auto;
+    max-width: 40rem;
     padding: 0 1rem;
+}
 
-    & section {
-        padding: 0;
-    }
-
-    &>* {
-        max-width: 40rem;
-        margin: 1rem auto;
-    }
+section>*{
+    margin-top: 1rem;
+    margin-bottom: 0;
 }
 
 .background-header {
@@ -217,6 +193,7 @@ header {
     text-align: center;
     text-wrap: balance;
 }
+
 .navbar {
     padding: 1rem;
     width: 100%;
@@ -267,34 +244,42 @@ header {
     margin-top: 3px;
 }
 
+
 figure {
+    /* width: calc(100% - 2rem); */
+    margin-right: 0;
+    margin-left: 0;
     box-sizing: border-box;
     border: var(--border-style-1);
-    left: -0.5rem;
-    margin-right: auto;
-    margin-left: auto;
+    /* left: -0.5rem; */
+    padding-left: 0;
+    /* margin-right: 0;
+    margin-left: auto; */
 
-    &:has(.sidebyside){
+    &:has(.sidebyside) {
         border: 1px solid black;
     }
-    
+
     &>img {
         max-width: 100%;
     }
 
-    & .table-container {
-        overflow-x: scroll;
-    }
+}
 
-    & table {
-        width: 100%;
-        background-color: #fff8;
-        
-    }
+:is(h3,h4)~figure{
+    margin-left: .5rem;
+}
+.table-container {
+    overflow-x: scroll;
+}
 
-    & pre>code {
-        font-size: 0.8em;
-    }
+pre>code {
+    font-size: 0.8em;
+}
+
+.table-container>table{
+    width: 100%;
+    background-color: #fff8;
 }
 
 figcaption {
@@ -306,11 +291,8 @@ figcaption {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-
-
-figcaption+.sidebyside{
-    border: var(--border-style-1);
-    border-top-width: 1px;
+.sidebyside+figcaption{
+    border: 1px solid black;
 }
 
 figcaption.numbered::before {
@@ -336,15 +318,21 @@ tr:nth-child(even), thead {
 
 
 .sidebyside {
-    display: flex;
-    flex-wrap: wrap;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) ;
+    /* grid-auto-rows: minmax(300px, 50vh) ; */
+    /* display: flex;
+    flex-wrap: wrap; */
+
     &>* {
+        box-sizing: border-box;
         border: 1px solid black;
-        flex: 1 1 300px;
+        /* flex: 1 1 300px; */
         /* Grow and shrink, but minimum width is 300px */
-        min-width: 300px;
+        /* min-width: 300px; */
         /* Ensures items don't shrink below 300px */
-        max-width: 100%;
+        /* max-width: 100%; */
     }
 }
 
@@ -457,12 +445,12 @@ pre {
     margin: 4rem auto;
 }
 
-activite>h5{
-        font-size: 1.2em;
-        text-align: center;
-        font-style: normal;
-        font-weight: 400;
-        text-shadow: white 0px 0px 4px;
+activite>h5 {
+    font-size: 1.2em;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    text-shadow: white 0px 0px 4px;
 }
 
 
@@ -589,8 +577,8 @@ activite>h5{
 /* UTILITY CLASSES FOR HANDLING THE TRANSITION TO TABLE-OF-CONTENT VIEW */
 
 
-.shrink, .shrink *{
-    display: block;
+.shrink, .shrink * {
+    display: none;
     opacity: 0;
     position: static;
     height: 0 !important;
@@ -601,19 +589,20 @@ activite>h5{
 
 }
 
-.shrink *::after, .shrink *::before{
+.shrink *::after, .shrink *::before {
     display: none;
 }
 
-section:has(h4+.shrink){
-    height: 2lh;
+section:has(h3)>section:has(h4+.shrink) {
+    height: min-content;
 }
-/* .hidden{
-    display:none; 
-    transition: display 0.5s;
-} */
 
-.content-list-item{
+.hidden {
+    display: none;
+    transition: display 0.5s;
+}
+
+.content-list-item {
     background: none;
     margin: 0;
     transition: margin 0.3s;
@@ -623,20 +612,24 @@ section:has(h4+.shrink){
     /* &:not(:hover){
         opacity: 0.5;
     } */
-    
+
 }
 
-body:has(.content-list-item){
+body:has(.content-list-item) {
     height: 100vh;
     overflow: scroll;
     scroll-snap-type: y mandatory;
 }
 
 
-body:has(.content-list-item)::before{
+body:has(.content-list-item)::before {
     display: block;
     content: "";
-    height: 50vh;
+    /* height: 50vh; */
     overflow: hidden;
     scroll-snap-type: y mandatory;
 }
+
+/* section, h1, h2, h3, h4, h5, h6 {
+    border: 1px solid green;
+} */

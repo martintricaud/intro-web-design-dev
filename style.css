@@ -6,8 +6,23 @@
     --border-style-1: 2px solid black;
 }
 
+body {
+    counter-reset: chapter section figure;
+    margin: 0;
+  
+    /* padding-bottom: 1rem; */
+    background: var(--gradient1);
+    background-attachment: fixed;
+}
+
+main{
+    padding: 0 1rem;
+}
 
 
+img{
+    display: block;
+}
 strong {
     font-weight: 600;
     font-style: italic;
@@ -25,24 +40,31 @@ h4::before {
 } */
 
 
-table {
-    border-collapse: collapse;
-    font-size: inherit;
-}
 
-body {
-    counter-reset: chapter section figure;
-    margin: 0;
-    padding-bottom: 1rem;
+
+hgroup{
     background: var(--gradient1);
+    height: max-content;
     background-attachment: fixed;
 }
 
-h2 {
-    padding-bottom: calc(1em / 8);
-    font-size: 2.6rem;
-    border-bottom: calc(1em / 8) solid black;
+hgroup:has(h4){
+    position: sticky;
+    top: 0;
 }
+
+
+h1, h2, h3 {
+    font-family: "Helvetica";
+}
+
+hgroup:has(h3)~*:not(section),hgroup:has(h4)~*  {
+    padding-left: 1rem;
+    max-width: 40rem;
+    margin: 1rem auto;
+    z-index: 10;
+}
+
 
 h3 {
     font-size: 2.1rem;
@@ -51,14 +73,12 @@ h3 {
 
 h4 {
     font-size: 1.4rem;
-    height: 1lh;
-    padding-top: 0.5lh;
-    padding-bottom: 0.5lh;
-    position: sticky;
-    height: max-content;
-    top: 0;
-    background: var(--gradient1);
-    background-attachment: fixed;
+    padding: 0.5lh 0 0.5lh 0.5rem;
+}
+
+h3,h4{
+    margin: 0 auto;
+    max-width: 40rem;
 }
 
 h4>a {
@@ -68,58 +88,21 @@ h4>a {
 
 h4::before {
     content: "├─";
-    position: absolute;
+    position: relative;
     left: -2ch;
     font-size: 1.1rem;
     font-style: normal;
     font-family: Fira Code;
     font-weight: bolder;
-
-}
-
-section:last-child>h4::before {
-    content: "└─ ";
-}
-
-.list-icon {
-    opacity: 20%;
-    padding-left: 1rem;
-    content: "≡";
-    font-family: monospace;
-    font-style: normal;
-    display: inline-block;
-    width: 20px;
-
-    &:hover {
-        opacity: 100%;
-        cursor: pointer;
-    }
-}
-
-
-
-h5 {
-    font-size: 1.1rem;
-}
-
-h1, h2, h3 {
-    font-family: "Helvetica";
-}
-
-h3~* {
-    margin-left: 1rem;
-}
-
-h4{
-    padding-left: 0.5rem;
-}
-h4~* {
-    margin-left: 0.5rem;
 }
 
 h4, h5 {
     font-style: italic;
     font-weight: 600;
+}
+
+h5 {
+    font-size: 1.1rem;
 }
 
 h6 {
@@ -131,6 +114,13 @@ h6 {
     }
 }
 
+section:last-child>h4::before {
+    content: "└─ ";
+}
+
+
+
+
 
 p, li {
     line-height: 1.5
@@ -141,24 +131,7 @@ h1, h2, h3, h4, h5 {
 }
 
 
-ol,
-ul {
-    padding-left: 1rem;
-
-}
-
-ul, ol, li {
-    margin-top: 1em;
-
-}
-
-main {
-    margin: 1rem auto;
-    max-width: 40rem;
-    padding: 0 1rem;
-}
-
-section>*{
+section>*:not(.interactive-demo *){
     margin-top: 1rem;
     margin-bottom: 0;
 }
@@ -246,40 +219,52 @@ header {
 
 
 figure {
-    /* width: calc(100% - 2rem); */
     margin-right: 0;
     margin-left: 0;
     box-sizing: border-box;
     border: var(--border-style-1);
-    /* left: -0.5rem; */
-    padding-left: 0;
-    /* margin-right: 0;
-    margin-left: auto; */
+    padding-left: 0!important;
 
     &:has(.sidebyside) {
         border: 1px solid black;
     }
-
     &>img {
         max-width: 100%;
     }
-
 }
 
 :is(h3,h4)~figure{
     margin-left: .5rem;
 }
+
 .table-container {
     overflow-x: scroll;
 }
 
-pre>code {
-    font-size: 0.8em;
-}
 
 .table-container>table{
     width: 100%;
     background-color: #fff8;
+}
+
+/* ======== STYLING FIGURES ======== */
+
+
+.sidebyside {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) ;
+    /* grid-auto-rows: minmax(300px, 50vh) ; */
+    /* display: flex;
+    flex-wrap: wrap; */
+
+    &>* {
+        box-sizing: border-box;
+        border: 1px solid black;
+    }
+}
+
+.sidebyside+figcaption{
+    border: 1px solid black;
 }
 
 figcaption {
@@ -291,22 +276,22 @@ figcaption {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.sidebyside+figcaption{
-    border: 1px solid black;
-}
-
 figcaption.numbered::before {
     counter-increment: figure;
     content: "Fig. " counter(figure) " : "
 }
 
+table {
+    border-collapse: collapse;
+    font-size: inherit;
+}
+
+
 th {
     text-align: left;
 }
 
-
-th,
-td {
+th,td {
     line-height: 1.618rem;
     padding-left: .5rem;
 }
@@ -316,24 +301,12 @@ tr:nth-child(even), thead {
 }
 
 
+/* ======== STYLING CODE ======== */
 
-.sidebyside {
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) ;
-    /* grid-auto-rows: minmax(300px, 50vh) ; */
-    /* display: flex;
-    flex-wrap: wrap; */
-
-    &>* {
-        box-sizing: border-box;
-        border: 1px solid black;
-        /* flex: 1 1 300px; */
-        /* Grow and shrink, but minimum width is 300px */
-        /* min-width: 300px; */
-        /* Ensures items don't shrink below 300px */
-        /* max-width: 100%; */
-    }
+pre {
+    white-space-collapse: initial;
+    margin: 0;
+    width: 100%;
 }
 
 code {
@@ -344,11 +317,11 @@ code {
     overflow: scroll;
 }
 
-pre {
-    white-space-collapse: initial;
-    margin: 0;
-    width: 100%;
+
+pre>code {
+    font-size: 0.8em;
 }
+
 
 #text-tags td:nth-child(2) {
     width: 50%;
@@ -418,17 +391,29 @@ pre {
 .icon {
     font-style: normal;
     font-family: monospace;
-    font-size: 1em;
-    border-width: 2px;
-    border-style: groove;
     border-radius: 5px;
     display: inline-block;
     width: 1em;
     padding-left: calc(1em/3);
 }
 
-.cutout-style {
+.list-icon {
+    opacity: 20%;
+    padding-left: 1rem;
+    content: "≡";
+    font-family: monospace;
+    font-style: normal;
+    display: inline-block;
+    width: 20px;
 
+    &:hover {
+        opacity: 100%;
+        cursor: pointer;
+    }
+}
+
+
+.cutout-style {
     border-bottom: 3px solid #1080;
     border-right: 3px solid #1082;
     border-top: 3px solid #1084;
@@ -460,7 +445,6 @@ activite>h5 {
     z-index: -1;
     height: 15rlh;
     position: relative;
-
 
     & span {
         padding: 0.5em 0 0 0.5em;
@@ -505,8 +489,6 @@ activite>h5 {
 
     & span.ex {
         display: inline-block;
-
-
         border: 1px solid green;
 
         &::after {
@@ -604,8 +586,6 @@ section:has(h3)>section:has(h4+.shrink) {
 
 .content-list-item {
     background: none;
-    margin: 0;
-    transition: margin 0.3s;
     /* position: static; */
     /* padding-bottom: 0; */
     /* transition: position 0.5s, font-size 0.1s; */
@@ -630,6 +610,15 @@ body:has(.content-list-item)::before {
     scroll-snap-type: y mandatory;
 }
 
+
 /* section, h1, h2, h3, h4, h5, h6 {
     border: 1px solid green;
 } */
+
+.full-width{
+    left: 0;
+    height: calc(80vh + 2rem);
+    position: static;
+
+}
+

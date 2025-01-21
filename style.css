@@ -23,6 +23,10 @@ main{
 img{
     display: block;
 }
+
+hr{
+    margin: 0;
+}
 strong {
     font-weight: 600;
     font-style: italic;
@@ -149,7 +153,7 @@ section>*:not(.interactive-demo *){
 
 .keyword {
     color: rgb(110, 0, 199);
-    border: 1px solid rgb(110, 0, 199);
+    /* border: 1px solid rgb(110, 0, 199); */
     padding: 0 0.2em;
     background-color: rgb(255, 250, 100);
 }
@@ -231,6 +235,17 @@ figure {
     &>img {
         max-width: 100%;
     }
+}
+
+.inline-fig{
+    display:inline-block; 
+    width:max-content;
+    vertical-align: middle;
+    margin: inherit;
+    &>pre>code{
+        padding: 0!important;
+    }
+    border-width: 0px;
 }
 
 :is(h3,h4)~figure{
@@ -622,3 +637,22 @@ body:has(.content-list-item)::before {
 
 }
 
+#hoverMe.foobar:hover{
+    position: relative;
+    top: 3px;
+    cursor: pointer;
+    border-bottom: 2px solid black;
+}
+
+#hoverMe.foobar:active{
+    position: relative;
+    top: 20px;
+    font-weight: bold;
+    border-bottom: 8px solid black;
+}
+
+#clickMe.foobar:active{
+    position: relative;
+    top: 20px;
+    font-weight: bold;
+}

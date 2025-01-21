@@ -52,7 +52,7 @@
                 <hgroup>
                     <h4 class="clip-background"><a href="#ip">La naissance de l'Internet Protocol
                             (IP)</a>
-                        
+
                     </h4>
                     <div class="list-icon">≡</div>
                 </hgroup>
@@ -828,6 +828,12 @@
                         <div class="list-icon">≡</div>
                     </h4>
                 </hgroup>
+                <p>
+                    La navigation désigne de façon générale l'ensemble des moyens mis en oeuvre pour permettre à un utilisateur d'accéder à un contenu qui n'est pas affiché sur la page.
+                </p>
+                <p>
+                    Soit parce qu'on ne peut pas afficher tout le contenu pertinent - par manque de place, soit parce qu'on ne veut pas afficher tout le contenu, pour ne pas surcharger l'attention des visiteurs de la page.
+                </p>
             </section>
 
         </section>
@@ -1363,7 +1369,7 @@ h3{
                     Vous pouvez examiner l'effet des différentes valeurs des propriétés <code>display</code> et <code>position en jouant avec l'exemple suivant</code>
                 </p>
                 <div class="full-width">
-                    <div class="sidebyside interactive-demo">
+                    <div class="sidebyside" id="display-and-position">
                         <section id="controls">
                             <form>
                                 <h1><code>position</code> property for div 2</h1>
@@ -1435,23 +1441,72 @@ h3{
                     </h4>
                 </hgroup>
                 <p>
-                    En CSS, il est possible d'appliquer des styles de façon contextuelle, notamment en prenant en compte des interactions qui ont lieu ou ont eu lieu sur la page.
+                    En CSS, il est possible d'appliquer des styles de façon contextuelle, notamment en prenant en compte des interactions qui ont lieu (ou ont eu lieu) sur la page.
                     <br>
                     Par exemple, on comprend beaucoup plus facilement qu'un élément est cliquable si son apparence change lorsque la souris passe dessus, ou alors qu'un lien a déjà été visité si il est de couleur différente des liens qui ne l'ont pas été.
                 </p>
                 <p>
                     On utilise pour celà ce qu'on appelle des pseudo-classes, qui sont des sélecteurs qui ne s'activent que dans certaines conditions automatiquement détectées par le navigateur.
 
-                    Les instructions de style contenues dans <code>.foobar:hover</code> ne s'active que lorsque le pointeur est situé au dessus d'un élément de classe foobar
+                    Par exemple, les instructions de style contenues dans <code>.foobar:active</code> ne s'activent que un élément de classe <code>foobar</code> est "activé" par le pointeur (c'est à dire lorsque l'on clique dessus)
                 </p>
-                <section class="activite cutout-style">
-                    <h5>Ajouter du feedforward à l'aide de pseudo-classes</h5>
-                </section>
+                <figure>
+                    <div class="sidebyside">
+                        <pre>
+                            <code class="language-css">.foobar:active{
+    position: relative;
+    top: 20px;
+    font-weight: bold;
+}</code>
+                        </pre>
+                        <div style="display:flex; justify-content: center; align-items: center;">
+                            <span id = "clickMe" class="foobar">Click Me!</span>
+                        </div>
+                    </div>
+                </figure>
+
+                <p>
+                    En design d'interaction, on utilise souvent le terme de <strong class="keyword">feedback</strong> pour désigner l'évènement sensoriel qui se produit en réaction à une action - et qui souvent aide à comprendre ce qui vient de se passer.
+                </p>
+                <p>
+                    On rencontre aussi parfois le terme de <strong class="keyword">feedforward</strong> pour parler d'un évènement sensoriel qui indique ce qu'il va se passer en réaction à une action que l'on s'apprête à faire.
+                    Par exemple, le fait de modifier l'apparence d'un élément lorsque la souris le survole est fréquemment utilisé pour indiquer que cet élément est cliquable. 
+                </p>
+
+                <figure>
+                    <div class="sidebyside">
+                        <pre>
+                            <code class="language-css">.foobar:hover{
+    .foobar:hover{
+        position: relative;
+        top: 3px;
+        cursor: pointer;
+        border-bottom: 2px solid black;
+    }
+                                
+.foobar:active{
+        position: relative;
+        top: 20px;
+        font-weight: bold;
+        border-bottom: 8px solid black;
+    }
+}</code>
+                        </pre>
+                        <div style="display:flex; justify-content: center; align-items: center;">
+                            <span id = "hoverMe" class="foobar">Hover Me!</span>
+                        </div>
+                    </div>
+                </figure>
+
+                
+
                 <section class="activite cutout-style">
                     <h5>
                         Utiliser les tranistions pour améliorer le feedback
                     </h5>
                 </section>
+
+              
 
             </section>
             <hr>
@@ -1478,7 +1533,9 @@ h3{
                             <strong class="keyword">Addition de sélecteurs</strong>
                             <br>
                             Si j'accolle des sélecteurs de classe de la façon suivante:
-                            <code>.classe1.classe2.classe3{ ... }</code> cela cible tous les éléments dotés de la classe <code>classe1</code> <u><b>et</b></u> de la classe <code>classe2</code> <u><b>et</b></u> de la classe <code>classe3</code>
+                            <figure class="inline-fig">
+                                <pre><code class="language-css">.classe1.classe2.classe3{ ... }</code></pre>
+                            </figure> cela cible tous les éléments dotés de la classe <code>classe1</code> <u><b>et</b></u> de la classe <code>classe2</code> <u><b>et</b></u> de la classe <code>classe3</code>
                         </li>
                         <li>
                             <strong class="keyword">Sélecteur de descendant</strong>
@@ -1608,28 +1665,46 @@ h3{
                 </hgroup>
                 <p>Un programme est un ensemble d'instructions écrites dans un langage doté de règles strictes - en tout cas plus strictes que le langage humain - afin de garantir que les instructions puissent être interprétées et executées de façon prévisible par un ordinateur.</p>
 
+                <p>
+                    Une variable est un conteneur d'information identifiable par un nom, que l'on appelle également l'<strong class="keyword">identifiant</strong> de la variable.
+                    Le contenu de ce conteneur d'information est appelé valeur.
+
+                </p>
+
+
+                <p> L'action de créer une variable s'appelle la <strong class="keyword">déclaration</strong>, et le fait de lui attribuer une valeur s'appelle l'<strong class="keyword">assignation</strong>
+
+                    La déclaration se fait avec le mot clef <code>let</code> et l'assignation avec le symbole <code>=</code>
+                </p>
+                <figure>
+                    <pre><code class="language-js">let a = 124
+</code></pre>
+                </figure>
+                <p>
+                    Certains langages imposent lors de la déclaration d'une variable de rajouter une annotation qui précise le <strong class="keyword">type</strong> d'informations qu'elle est autorisée à contenir.
+                    <br>
+                    JavaScript n'impose pas une telle précision, car le langage déduit automatiquement le type de la variable à partir de sa valeur.
+                    Ce type peut être
+                </p>
                 <ul>
-                    <li>Créer des conteneurs d'informations identifiables par un nom, appelés variables</li>
-                    <li>Stocker une information dans une entité nommée qu'on appelle variable, de façon a pouvoir s'y référer ultérieurement</li>
-                    <li>Modifier </li>
+                    <li>Un nombre (number) comme dans <figure class="inline-fig">
+                            <pre><code class="language-js">let x = 123</code></pre>
+                        </figure>
+                    </li>
+                    <li>Une chaine de caractère (string), comme dans <figure class="inline-fig">
+                            <pre><code class="language-js">let nom = "Nadia"</code></pre>
+                        </figure>
+                    </li>
+                    <li>
+                        Une valeur <strong class="keyword">booléenne</strong>, qui ne peut prendre que deux valeurs: <code>true</code> ou <code>false</code>, comme dans:
+                        <figure class="inline-fig">
+                            <pre><code class="language-js">let ouvert = false</code></pre>
+                        </figure>
+                    </li>
                 </ul>
+
             </section>
 
-            <section>
-                <hgroup>
-                    <h4 class="clip-background"><a href="#">Variables, Types, Valeurs</a>
-                        <div class="list-icon">≡</div>
-                    </h4>
-                </hgroup>
-                <p>
-                
-                </p>
-                <h5>Nombres, Chaines de Caractères, Booléens</h5>
-                <p>
-                    La déclaration de variable se fait à l'aide du mot clef <code>let</code>:
-                    L'instruction <code>let a</code>
-                </p>
-            </section>
 
             <section>
                 <hgroup>
@@ -1695,11 +1770,8 @@ h3{
                         <div class="list-icon">≡</div>
                     </h4>
                 </hgroup>
-                <p>Une structure conditionnelle est une </p>
+                <p>Une structure conditionnelle est une instruction qui permet de définir si oui on non le bloc d'instruction qui suit doit être exécuté, en fonctions de la condition précisée</p>
             </section>
-
-
-
             <section id="loops">
                 <hgroup>
                     <h4 class="clip-background"><a href="#loops">Boucles</a>
@@ -1707,9 +1779,38 @@ h3{
                     </h4>
                 </hgroup>
                 <p>Une boucle est une structure de contôle qui permet de répéter un bloc d'instructions de façon répétitive un certain nombre de fois.
-                Le nombre de répétitions - ou itérations, peut être défini de façon explicite par un compteur, ou de façon implicite, en fonction de si oui ou non une certaine condition a été atteinte.
+                    Le nombre de répétitions - ou itérations, peut être défini de façon explicite par un compteur, ou de façon implicite, en fonction de si oui ou non une certaine condition a été atteinte.
 
                 </p>
+
+                <figure>
+                    <div class="sidebyside">
+                        <div>
+                            <pre><code class="language-js">let i = 0;
+while(i<5){
+    console.log(i+" fois");
+    i++;
+}</code></pre>
+                            <hr>
+                            <pre><code class="language-js">for(let i=0; i<5; i++){
+    console.log(i + "fois")
+}</code></pre>
+                        </div>
+
+
+                        <pre>
+                                <code class="console">
+0 fois;
+1 fois;
+2 fois;
+3 fois;
+                                </code>
+                            </pre>
+
+
+
+                </figure>
+
             </section>
 
             <section id="objects-and-lists">
@@ -1730,7 +1831,7 @@ h3{
                     <li>
                         Deuxièmement, chaque "tiroir" d'un objet doit obligatoirement avoir un nom, un peu comme une étiquette, alors que les éléments d'une liste n'en ont pas.
 
-                        Ce nom également appelée clef (key) ou champ (field) doit être unique à l'intérieur d'un tiroir.
+                        Ce nom également appelée clef (<strong class="keyword">key</strong>) ou champ (<strong class="keyword">field</strong>) doit être unique à l'intérieur d'un tiroir.
                     </li>
                     <figure>
                         <pre><code class-language="javascript">// un exemple d'objet
@@ -1761,7 +1862,7 @@ let competences = ["Figma","Blender","shitposting","origamis"]</code></pre>
 
                 </p>
                 <figure>
-                    <pre><code class="language-javascript">let monHamster = {
+                    <pre><code class="language-js">let monHamster = {
     nom : "Poppy",
     age : 3,
     vaccins: [{
@@ -1793,7 +1894,7 @@ let competences = ["Figma","Blender","shitposting","origamis"]</code></pre>
                     Voici une façon de déclarer une fonction, suivi d'un appel
                 </p>
                 <figure>
-                    <pre><code class="language-javascript">//Declaration de la fonction
+                    <pre><code class="language-js">//Declaration de la fonction
     function maFonction(x){
         console.log("bonjour, je m'appelle: "+x)
     }
@@ -1848,8 +1949,16 @@ console.log(hypothenuse(b3,h3))</code></pre>
                     Une fonction peut être fournie par un objet, c'est à dire stockée dans l'un de ses champs (qu'on a appelé de façon imagée ses "tiroirs").
                     On y accède donc de la même manière qu'on accède à la valeur d'un champ.
                 </p>
+                <figure>
+                    <pre><code class="language-js">
 
+                    </code></pre>
+                </figure>
 
+                <p>
+                    Si l'on veut que le comportement d'une méthode dépende des propriétés de l'objet à laquelle elle appartient, on peut se référer à celui-ci en utilisant le mot-clef <code>this</code>
+
+                </p>
 
             </section>
             <section id="dom-api" data-topic="javascript">
@@ -1868,11 +1977,15 @@ console.log(hypothenuse(b3,h3))</code></pre>
                     Il est mis à disposition par défaut par le navigateur - tout comme d'autres objets comme l'objet <i>fenêtre</i> (<strong class="keyword">Window</strong>)
                     Il donne accès à toute l'arborescence des blocs de contenu, leurs attributs et propriétés de style, et fournit de nombreuses fonctions pour les parcourir et les modifier.
                 </p>
+
+                <p>
+                    Par exemple, l'instruction suivante permet de récupérer l'élément HTML portant l'identifiant <code>ex1</code> et de le stocker dans une variable appelée <code>a</code>
+                </p>
+               
                 <figure>
                     <pre>
-                    <code class="language-javascript">
+                    <code class="language-js">
     let a = document.getElementById("ex1")
-    let x = document.getElementsByClassName("classe1")
                     </code>
                 </pre>
                 </figure>
@@ -1885,6 +1998,22 @@ console.log(hypothenuse(b3,h3))</code></pre>
                 </p>
 
                 <figure>
+                    <pre>
+                        <code class="language-js">// Crée une variable qui stocke le premier élément de type div trouvé dans la page
+
+let monDiv = document.querySelector("div")
+
+// Crée une variable qui stocke une liste de tous les éléments de type div trouvés dans la page
+
+let elements = document.querySelectorAll("div")
+
+// Crée une variable qui stocke une liste de tous les éléments avec la classe "sticker" à l'intérieur de monDiv
+
+let stickersDuDiv = monDiv.querySelectorAll(".sticker")
+                        </code>
+                    </pre>
+                </figure>
+                <figure>
                     <div class="table-container">
                         <table>
                             <thead>
@@ -1892,13 +2021,34 @@ console.log(hypothenuse(b3,h3))</code></pre>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><code>element.classList.add("maClasse")</code></td>
+                                    <td>
+                                        <pre>
+                                            <code class="language-js">let element = document</code>
+                                        </pre>
+                                    </td>
+                                    <td>Ajouter une classe à <code>element</code>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td><code>element.classList.remove("maClasse")</code></td>
+                                    <td>
+                                        <pre>
+                                            <code class="language-js">element.classList.add("maClasse")</code>
+                                        </pre>
+                                    </td>
+                                    <td>Ajouter une classe à <code>element</code>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td><code>element.addEventListener("maClasse")</code></td>
+                                    <td>
+                                        <pre>
+                                            <code class="language-js">element.classList.remove("maClasse")</code>
+                                        </pre>
+                                    </td>
+                                    <td>Retirer une classe à <code>element</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                   
                                 </tr>
                             </tbody>
                         </table>
@@ -1914,7 +2064,7 @@ console.log(hypothenuse(b3,h3))</code></pre>
 
             <!-- <figure>
                 <pre>
-                    <code class="language-javascript">
+                    <code class="language-js">
     document.querySelectorAll('div[class^="ad-"]').forEach(div => div.remove());
                     </code>
                 </pre>
@@ -1956,7 +2106,7 @@ console.log(hypothenuse(b3,h3))</code></pre>
             <hgroup>
                 <h3>Ressources</h3>
             </hgroup>
-           
+
             <nav>
                 <ul>
                     <li>
@@ -1988,6 +2138,31 @@ console.log(hypothenuse(b3,h3))</code></pre>
                     </li>
                 </ul>
 
+                <!-- Pour de l'inspiration https://www.awwwards.com/websites/sites_of_the_day/ -->
+                <!-- https://web.archive.org/web/20181024111631/https://www.grow.paris/ -->
+            </nav>
+        </section>
+        <section id="ressources">
+            <hgroup>
+                <h3>Inspiration</h3>
+            </hgroup>
+
+            <nav>
+                Le Web Crado
+                <ul>
+                    <li>
+                        <a href="https://arngren.net">Arngren.net</a>
+                        <a href="http://www.seiryu-kan.com">Seiryu Kan</a>
+                        <a href="https://www.lingscars.com">Lings Cars</a>
+                    </li>
+
+                </ul>
+                Le Web Cool
+                <ul>
+                    <li>
+                        <a href="https://web.archive.org/web/20181024111631/https://www.grow.paris/">Festival GROW 2018</a>
+                    </li>
+                </ul>
                 <!-- Pour de l'inspiration https://www.awwwards.com/websites/sites_of_the_day/ -->
                 <!-- https://web.archive.org/web/20181024111631/https://www.grow.paris/ -->
             </nav>
@@ -2033,7 +2208,7 @@ console.log(hypothenuse(b3,h3))</code></pre>
 
     function collapseSectionToTitleLevels(titleTags) {
         titleTags.forEach(
-            titleTag => { document.querySelectorAll("hgroup:has("+titleTag + ")~*").forEach(elem => { elem.classList.add("shrink") }) }
+            titleTag => { document.querySelectorAll("hgroup:has(" + titleTag + ")~*").forEach(elem => { elem.classList.add("shrink") }) }
         )
     }
     Array.from(document.querySelectorAll("h4>.list-icon")).forEach(x => {

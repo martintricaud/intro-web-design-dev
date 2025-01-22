@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="./highlight/styles/default.css">
     <script src="./highlight/highlight.js"></script>
     <script>hljs.highlightAll();</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('code').forEach((el) => {
+                hljs.highlightElement(el);
+            });
+        });
+    </script>
 
 </head>
 
@@ -715,15 +722,11 @@
                 </p>
                 <p>
                     Une première façon de configurer l'apparence du contenu d'une balise html est d'utiliser l'attribut <code class="keyword">style</code>, en lui assignant des instructions de mise en forme, de la façon suivante:
+                    <code class="language-html">&lt;div style=&quot;...&quot;&gt; 
+                        Lorem Ipsum 
+                &lt;/div&gt;</code>
                 </p>
-                <figure>
-                    <pre>
-                        <code class="language-html">&lt;div style=&quot;...&quot;&gt; 
-            Lorem Ipsum 
-    &lt;/div&gt;</code>
-            
-                    </pre>
-                </figure>
+
                 <p>
                     Une instruction de mise en forme s'écrit en règle générale de la façon suivante: <code>propriété: valeur(unité)</code> - l'unité étant optionnelle selon le type de propriété que l'on veut modifier. Voici quelques exemples de propriétés de styles avec une valeur compatible:
                 </p>
@@ -1366,7 +1369,7 @@ h3{
                     <figcaption class="numbered">Valeurs possibles de la propriété <span style="font-style: normal;">position</span></figcaption>
                 </figure>
                 <p>
-                    Vous pouvez examiner l'effet des différentes valeurs des propriétés <code>display</code> et <code>position en jouant avec l'exemple suivant</code>
+                    Vous pouvez examiner l'effet des différentes valeurs des propriétés <code class="language-css">display</code> et <code class="language-css">position</code> en jouant avec l'exemple suivant
                 </p>
                 <div class="full-width">
                     <div class="sidebyside" id="display-and-position">
@@ -1448,7 +1451,7 @@ h3{
                 <p>
                     On utilise pour celà ce qu'on appelle des pseudo-classes, qui sont des sélecteurs qui ne s'activent que dans certaines conditions automatiquement détectées par le navigateur.
 
-                    Par exemple, les instructions de style contenues dans <code>.foobar:active</code> ne s'activent que un élément de classe <code>foobar</code> est "activé" par le pointeur (c'est à dire lorsque l'on clique dessus)
+                    Par exemple, les instructions de style contenues dans <code>.foobar:active</code> ne s'activent que un élément de classe <code class="language-html">foobar</code> est "activé" par le pointeur (c'est à dire lorsque l'on clique dessus)
                 </p>
                 <figure>
                     <div class="sidebyside">
@@ -1460,7 +1463,7 @@ h3{
 }</code>
                         </pre>
                         <div style="display:flex; justify-content: center; align-items: center;">
-                            <span id = "clickMe" class="foobar">Click Me!</span>
+                            <span id="clickMe" class="foobar">Click Me!</span>
                         </div>
                     </div>
                 </figure>
@@ -1470,7 +1473,7 @@ h3{
                 </p>
                 <p>
                     On rencontre aussi parfois le terme de <strong class="keyword">feedforward</strong> pour parler d'un évènement sensoriel qui indique ce qu'il va se passer en réaction à une action que l'on s'apprête à faire.
-                    Par exemple, le fait de modifier l'apparence d'un élément lorsque la souris le survole est fréquemment utilisé pour indiquer que cet élément est cliquable. 
+                    Par exemple, le fait de modifier l'apparence d'un élément lorsque la souris le survole est fréquemment utilisé pour indiquer que cet élément est cliquable.
                 </p>
 
                 <figure>
@@ -1493,12 +1496,12 @@ h3{
 }</code>
                         </pre>
                         <div style="display:flex; justify-content: center; align-items: center;">
-                            <span id = "hoverMe" class="foobar">Hover Me!</span>
+                            <span id="hoverMe" class="foobar">Hover Me!</span>
                         </div>
                     </div>
                 </figure>
 
-                
+
 
                 <section class="activite cutout-style">
                     <h5>
@@ -1506,7 +1509,7 @@ h3{
                     </h5>
                 </section>
 
-              
+
 
             </section>
             <hr>
@@ -1533,9 +1536,7 @@ h3{
                             <strong class="keyword">Addition de sélecteurs</strong>
                             <br>
                             Si j'accolle des sélecteurs de classe de la façon suivante:
-                            <figure class="inline-fig">
-                                <pre><code class="language-css">.classe1.classe2.classe3{ ... }</code></pre>
-                            </figure> cela cible tous les éléments dotés de la classe <code>classe1</code> <u><b>et</b></u> de la classe <code>classe2</code> <u><b>et</b></u> de la classe <code>classe3</code>
+                            <code class="language-css">.classe1.classe2.classe3{ ... }</code> cela cible tous les éléments dotés de la classe <code>classe1</code> <u><b>et</b></u> de la classe <code>classe2</code> <u><b>et</b></u> de la classe <code>classe3</code>
                         </li>
                         <li>
                             <strong class="keyword">Sélecteur de descendant</strong>
@@ -1554,7 +1555,7 @@ h3{
                             <br>
                             Si j'accolle deux sélecteurs A et B en les séparant d'un <code>~</code>, B ne ciblera que les éléments situés après et au même niveau hiérarchique qu'un élément ciblé par le selecteur A.
                             <br>
-                            Par exemple <code>li.separateur~li{ ... }</code> ciblera tous les éléments de type <code>li</code> situés après les élément <code>li</code> portant la classe <code>separateur</code>
+                            Par exemple <code class="language-css">li.separateur~li{ ... }</code> ciblera tous les éléments de type <code>li</code> situés après les élément <code>li</code> portant la classe <code>separateur</code>
                         </li>
                         <li>
                             <strong class="keyword">Sélecteur de successeur direct</strong>
@@ -1657,6 +1658,13 @@ h3{
                 Auparavant, l'interactivité des pages Web reposait essentiellement sur Flash - qui a été pratiquement remplacée par Javascript.
                 La génération automatique de contenu en réaction a des actions utilisateurs était gérée bien souvent par des programmes écrit en PHP, qui génèrent des pages HTML depuis un serveur.
             </p>
+            <!-- <figure>
+                <div class="sidebyside">
+                    <canvas>
+
+                    </canvas>
+                </div>
+            </figure> -->
             <section id="js-concepts">
                 <hgroup>
                     <h4 class="clip-background"><a href="#js-concepts">Concepts de base</a>
@@ -1673,13 +1681,9 @@ h3{
 
 
                 <p> L'action de créer une variable s'appelle la <strong class="keyword">déclaration</strong>, et le fait de lui attribuer une valeur s'appelle l'<strong class="keyword">assignation</strong>
-
-                    La déclaration se fait avec le mot clef <code>let</code> et l'assignation avec le symbole <code>=</code>
+                    La déclaration se fait avec le mot clef <code class="language-js">let</code> et l'assignation avec le symbole <code>=</code> comme dans <code class="language-js">let a = 124</code>
                 </p>
-                <figure>
-                    <pre><code class="language-js">let a = 124
-</code></pre>
-                </figure>
+
                 <p>
                     Certains langages imposent lors de la déclaration d'une variable de rajouter une annotation qui précise le <strong class="keyword">type</strong> d'informations qu'elle est autorisée à contenir.
                     <br>
@@ -1688,17 +1692,17 @@ h3{
                 </p>
                 <ul>
                     <li>Un nombre (number) comme dans <figure class="inline-fig">
-                            <pre><code class="language-js">let x = 123</code></pre>
+                            <code class="language-js">let x = 123</code>
                         </figure>
                     </li>
                     <li>Une chaine de caractère (string), comme dans <figure class="inline-fig">
-                            <pre><code class="language-js">let nom = "Nadia"</code></pre>
+                            <code class="language-js">let nom = "Nadia"</code>
                         </figure>
                     </li>
                     <li>
                         Une valeur <strong class="keyword">booléenne</strong>, qui ne peut prendre que deux valeurs: <code>true</code> ou <code>false</code>, comme dans:
                         <figure class="inline-fig">
-                            <pre><code class="language-js">let ouvert = false</code></pre>
+                            <code class="language-js">let ouvert = false</code>
                         </figure>
                     </li>
                 </ul>
@@ -1712,10 +1716,16 @@ h3{
                         <div class="list-icon">≡</div>
                     </h4>
                 </hgroup>
-
+                
+                <p>
+                    Par défaut lorsque l'on crée une variable et qu'on lance le programme qui la contient, cette variable n'existe nulle part ailleurs que dans la mémoire de l'ordinateur: elle n'a aucune manifestation visible - que ce soit sous forme de texte, d'élément d'interface ou autre.
+                </p>
+                <p>
+                    
+                </p>
 
                 <p>
-                    Activité
+
                 <ul>
                     <li>Utiliser l'inspecteur pour accéder à la console</li>
                     <li>
@@ -1737,31 +1747,71 @@ h3{
                     </h4>
                 </hgroup>
                 <p>
-                    Un opérateur est un est un symbole qui indique à la machine un calcul ou une action à effectuer à partir du terme ou des termes
+                    Un opérateur est un est un symbole qui indique à la machine un calcul ou une action à effectuer à partir des valeurs indiquées à sa gauche, à sa droite ou les deux.
                 </p>
 
                 <section>
-                    <h6>Opérateurs arithmétiques.</h6>
-                    <ul>
-                        <li>l'opérateur d'addition <code>+</code> </li>
-                        <li>l'opérateur de soutstraction <code>-</code></li>
-                        <li>l'opérateur de multiplication <code>*</code></li>
-                        <li>l'opérateur de division <code>/</code> </li>
-                        <li>l'opérateur puissance <code>**</code></li>
-                        <li>l'opérateur modulo <code>%</code></li>
-                    </ul>
+                    <h6>Les opérateurs arithmétiques</h6>
+                    <p> sont probablement l'exemple le plus familier, et permettent de combiner de valeurs de type <code class="language-js">number</code> pour obtenir un autre valeur de type <code class="language-js">number</code>.
+                    </p>
+
+                    <figure>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <td>Opérateur</td>
+                                    <td>Symbole</td>
+                                    <td>Exemple</td>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>addition</td>
+                                        <td>+</td>
+                                        <td><code class="language-js">console.log(2 + 4)</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>soustraction</td>
+                                        <td>-</td>
+                                        <td><code class="language-js">console.log(2 - 4)</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>multiplication</td>
+                                        <td>*</td>
+                                        <td><code class="language-js">console.log(2 * 4)</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>division</td>
+                                        <td>/</td>
+                                        <td><code class="language-js">console.log(2 / 4)</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>puissance</td>
+                                        <td>**</td>
+                                        <td><code class="language-js">console.log(2 ** 4)</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>modulo</td>
+                                        <td>%</td>
+                                        <td><code class="language-js">console.log(2 ** 4)</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </figure>
+
                 </section>
+
                 <section>
+                    <h6>Les opérateurs booleens </h6>
+                </section>
 
-                    <section>
-                        <h6>Opérateurs booleens </h6>
-                    </section>
+                <section>
+                    <h6>Les opérateurs de comparaison </h6>
+                </section>
 
-                    <li>
-                        Operateurs sur des chaines de caractère
-                    </li>
-                    <li>Opérateurs de comparaison</li>
-                    </ul>
+                <section>
+                    <h6>Les opérations sur les chaines de caractère </h6>
                 </section>
             </section>
             <section id="control-structures">
@@ -1770,7 +1820,7 @@ h3{
                         <div class="list-icon">≡</div>
                     </h4>
                 </hgroup>
-                <p>Une structure conditionnelle est une instruction qui permet de définir si oui on non le bloc d'instruction qui suit doit être exécuté, en fonctions de la condition précisée</p>
+                <p>Une structure conditionnelle est une instruction qui permet de définir si oui on non le bloc d'instruction qui suit doit être exécuté, en fonctions de la condition précisée./p>
             </section>
             <section id="loops">
                 <hgroup>
@@ -1834,7 +1884,7 @@ while(i<5){
                         Ce nom également appelée clef (<strong class="keyword">key</strong>) ou champ (<strong class="keyword">field</strong>) doit être unique à l'intérieur d'un tiroir.
                     </li>
                     <figure>
-                        <pre><code class-language="javascript">// un exemple d'objet
+                        <pre><code class="language-js">// un exemple d'objet
 let identite = {
     nom : "Razowski",
     prenom: "Bob",
@@ -1890,7 +1940,7 @@ let competences = ["Figma","Blender","shitposting","origamis"]</code></pre>
                 <p>
                     L'action de regrouper des instructions à l'intérieur d'un bloc réutilisable s'appelle la <strong class="keyword">déclaration de la fonction</strong>.
                     <br>
-                    Ces instructions s'exécutent lors d'une étape qu'on appelle - selon les cas de figure - l'<strong class="keyword">évaluation</strong>, l'<strong class="keyword">appel</strong> ou l'<strong class="keyword">exécution de la fonction</strong>
+                    Ces instructions s'exécutent lors d'une étape qu'on appelle - selon les cas de figure - l'<strong class="keyword">évaluation</strong>, l'<strong class="keyword">appel</strong> ou l'<strong class="keyword">exécution de la fonction</strong>.
                     Voici une façon de déclarer une fonction, suivi d'un appel
                 </p>
                 <figure>
@@ -1977,26 +2027,34 @@ console.log(hypothenuse(b3,h3))</code></pre>
                     Il est mis à disposition par défaut par le navigateur - tout comme d'autres objets comme l'objet <i>fenêtre</i> (<strong class="keyword">Window</strong>)
                     Il donne accès à toute l'arborescence des blocs de contenu, leurs attributs et propriétés de style, et fournit de nombreuses fonctions pour les parcourir et les modifier.
                 </p>
-
                 <p>
-                    Par exemple, l'instruction suivante permet de récupérer l'élément HTML portant l'identifiant <code>ex1</code> et de le stocker dans une variable appelée <code>a</code>
+                    Quelle que soit la page, l'objet Document correspondant donnera toujours accès aux mêmes propriétés et méthodes, car sa structure respecte le Modèle d'objet document - ou <strong class="keyword">Document Object Model</strong> défini par le World Wide Web Consortium.
                 </p>
-               
+                <p>
+                    Par exemple, la méthode suivante permet de récupérer l'élément HTML portant l'identifiant <code>ex1</code> et de le stocker dans une variable appelée <code>a</code>
+                </p>
+
                 <figure>
                     <pre>
-                    <code class="language-js">
-    let a = document.getElementById("ex1")
-                    </code>
-                </pre>
+                        <code class="language-js">let a = document.getElementById("ex1")</code>
+                    </pre>
                 </figure>
                 <p>
                     L'ensemble des fonctionnalités mise à disposition par un objet externe au programme que l'on écrit est appelée <i>Interface de Programmation Applicative</i>, ou en anglais <strong class="keyword">API: Application Programming Interface</strong>.
                 </p>
-
-                <p>Chacun des éléments de l'arborescence de contenu HTML stockée dans l'objet document est lui même un objet JavaScript, dont les propriétés reflètent (entre autres) les attributs de l'élément HTML correspondant. <br>
-                    Par exemple, la propriété <code>classList</code> regroupe l'ensemble des classes déclarées dans l'attribut <code>class</code> de l'élément HTML correspondant.
+                <p>
+                    Chacun des éléments de l'arborescence de contenu HTML stockée dans l'objet document est lui même un objet JavaScript, dont les propriétés reflètent (entre autres) les attributs de l'élément HTML correspondant.
                 </p>
-
+                <p>
+                    Par exemple, la propriété <code>classList</code> regroupe l'ensemble des classes déclarées dans l'attribut <code>class</code> de l'élément HTML correspondant.
+                    On peut l'afficher en utilisant la syntaxe d'accès à une propriété d'un objet.
+                    En admettant que l'on s'intéresse à l'élément stocké dans la variable <code>a</code> de l'exemple précédent, celà donne:
+                </p>
+                <figure>
+                    <pre>
+                        <code class="language-js">console.log(a.classList)</code>
+                    </pre>
+                </figure>
                 <figure>
                     <pre>
                         <code class="language-js">// Crée une variable qui stocke le premier élément de type div trouvé dans la page
@@ -2013,47 +2071,9 @@ let stickersDuDiv = monDiv.querySelectorAll(".sticker")
                         </code>
                     </pre>
                 </figure>
-                <figure>
-                    <div class="table-container">
-                        <table>
-                            <thead>
 
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <pre>
-                                            <code class="language-js">let element = document</code>
-                                        </pre>
-                                    </td>
-                                    <td>Ajouter une classe à <code>element</code>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <pre>
-                                            <code class="language-js">element.classList.add("maClasse")</code>
-                                        </pre>
-                                    </td>
-                                    <td>Ajouter une classe à <code>element</code>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <pre>
-                                            <code class="language-js">element.classList.remove("maClasse")</code>
-                                        </pre>
-                                    </td>
-                                    <td>Retirer une classe à <code>element</code>
-                                    </td>
-                                </tr>
-                                <tr>
-                                   
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </figure>
+     
+              
                 <!-- <section data-topic="javascript html" class="activite cutout-style">Ecrire un script pour supprimer du contenu sur une page </section>
                 <section data-topic="javascript css" class="activite cutout-style">Ecrire un script pour injecter une feuille de style sur une page </section>
     

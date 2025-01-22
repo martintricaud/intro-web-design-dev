@@ -228,7 +228,6 @@ figure {
     box-sizing: border-box;
     border: var(--border-style-1);
     padding-left: 0!important;
-
     &:has(.sidebyside) {
         border: 1px solid black;
     }
@@ -237,13 +236,16 @@ figure {
     }
 }
 
+p > code.hljs { display: inline!important;  width:max-content;}
+
 .inline-fig{
-    display:inline-block; 
+    display:inline!important; 
     width:max-content;
     vertical-align: middle;
-    margin: inherit;
+    margin: 0!important;
     &>pre>code{
         padding: 0!important;
+
     }
     border-width: 0px;
 }
@@ -321,7 +323,7 @@ tr:nth-child(even), thead {
 pre {
     white-space-collapse: initial;
     margin: 0;
-    width: 100%;
+    /* width: 100%; */
 }
 
 code {
@@ -655,4 +657,21 @@ body:has(.content-list-item)::before {
     position: relative;
     top: 20px;
     font-weight: bold;
+}
+
+pre:has(.language-js){
+    position: relative;
+    z-index: -1;
+}
+pre:has(.language-js)::before{
+
+    display: block;
+    font-size: 0.7em;
+    padding: 2px;
+    content:"javascript";
+    position: absolute;
+    right: 0;
+    color: white;
+    background-color: black;
+    
 }

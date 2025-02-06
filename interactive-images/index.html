@@ -1,0 +1,74 @@
+<html>
+<head>
+    <style>
+        article{
+            min-width: 12rem;
+            &>*{
+                width: 100%;
+            }
+        }
+        img, button{
+            
+            display: block;
+        
+        }
+
+        img{
+            box-sizing: content-box;
+        }
+        #gallery{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titre1" class="groupe1">titre1</h1>
+    <h1 id="titre2" class="groupe1">titre2</h1>
+    <section id="gallery"></section>
+    <!-- <button onclick="modifierImage1()">Dis bonjour sagement</button>
+    <button onclick="modifierImage2()">Dis bonjour énervé</button> -->
+</body>
+<script>
+    let urlList = [
+    "https://picsum.photos/id/237/200/300",
+    "https://picsum.photos/id/1/200/300",
+    "https://picsum.photos/id/200/200/300",
+    "https://picsum.photos/id/12/200/300",
+    "https://picsum.photos/id/53/200/300",
+];
+
+
+for(let i = 0; i<urlList.length; i++){
+    const article = document.createElement("article");
+    const img = document.createElement("img");
+    img.src = urlList[i];
+    img.alt = "Sample Image";
+
+    function setTargetBorder(event){
+        event.target.style.border = "2px dashed red"
+    }
+
+    function filtre(event){
+        let red = event.pageX/window.innerWidth * 255;
+        let green = event.pageY/window.innerHeight * 255;
+        let blue = 124;
+        document.body.style.backgroundColor = "rgb("+red+","+green+","+blue+")"
+    }
+
+    const button = document.createElement("button");
+    button.textContent = "Click Me"; // Replace with desired button text
+    button.addEventListener("click",setTargetBorder);
+
+    img.addEventListener("mousemove", filtre);
+
+    article.appendChild(img);
+    article.appendChild(button);
+    document.getElementById("gallery").appendChild(article);
+}
+
+
+</script>
+<!-- <script src="script.js"></script> -->
+</html>
